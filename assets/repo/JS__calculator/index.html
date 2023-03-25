@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-color: rgb(87, 52, 46);
+            position: relative;
+        }
+
+
+        table {
+            border-collapse: separate;
+            border-collapse: separate;
+            border-spacing: 2px;
+            width: 255px;
+            height: 550px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: rgba(0, 0, 0, .9);
+            /* background-color: rgb(62, 40, 40); */
+            /* border-radius: 60px; */
+            color: rgb(143, 87, 87);
+            text-shadow: 1px 1px rgb(143, 87, 87), -1px -2px rgb(62, 40, 40);
+
+        }
+
+        td {
+            width: 255px;
+            /* background-color: rgb(96, 47, 47); */
+            /* background-color: rgb(70, 39, 39); */
+            background-color: rgb(68, 40, 35);
+
+            box-sizing: border-box;
+            /* box-shadow:
+            inset 3px 1px 1px rgba(20%, 20%, 40%, 0.5),
+            inset 1px 0.5px 0.1px rgba(247, 247, 247, 0.6); */
+
+            box-shadow:
+                inset 1px 2px 3px rgb(38, 38, 38, .9),
+                inset 1px 0.4px 0.1px rgb(255, 255, 255, .6);
+
+            /* padding: 10px */
+            /* border-radius: 25px; */
+            /* border: 1px solid lightgreen; */
+        }
+
+
+        #input,
+        #show {
+            text-align: right;
+
+        }
+
+        #show {
+            padding: 0 20px;
+            font-size: 50px;
+            word-break: break-all;
+            color: rgb(161, 126, 126);
+        }
+
+        #input {
+            font-size: 22px;
+            padding: 8px 20px;
+            word-break: break-all;
+        }
+
+        .phone {
+            /* background-color: rgba(29, 29, 29, 1); */
+            box-sizing: border-box;
+            border: 15px solid rgba(29, 29, 29, 1);
+            width: 280PX;
+            height: 580px;
+            border-radius: 45px;
+            position: relative;
+            /* position: absolute; */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            pointer-events: none;
+            box-shadow:
+                inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2),
+                /* inset 0px 0px 0px 2px #c8e2fd, */
+                /* inset 0px 0px 0px 1px #f7ffff, */
+                inset 0px 0px 0px 3px rgba(29, 29, 29, 9),
+                0px 0px 3px 1px rgb(82, 79, 79);
+            /* inset 0px 0px 0px 8px #d0e3f2; */
+        }
+
+
+        .face::after {
+            content: '';
+            background-color: rgba(29, 29, 29, 1);
+            width: 160px;
+            height: 26px;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            z-index: 999;
+        }
+
+        #content-out {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* z-index: 1; */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="content-out">
+        <div id="content-in">
+            <table cellspacing="1" cellpadding="1">
+                <tr height="40px">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr height="55px">
+                    <td colspan="4" id="input">0</td>
+                </tr>
+                <tr height="200px">
+                    <td colspan="4" id="show">0</td>
+                </tr>
+                <tr height="40px">
+                    <td colspan="3">C</td>
+                    <td>+</td>
+                </tr>
+                <tr height="40px">
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>-</td>
+                </tr>
+                <tr height="40px">
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>*</td>
+                </tr>
+                <tr height="40px">
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>/</td>
+                </tr>
+                <tr height="60px">
+                    <td>.</td>
+                    <td>0</td>
+                    <td colspan="2" style="font-size:30px">=</td>
+                </tr>
+                <tr height="20px">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="phone">
+        <div class="face"></div>
+    </div>
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js'></script>
+    <script>
+
+        const input = document.getElementById('input')
+        // const td = document.getElementsByTagName('td:not(#input)')
+        const show = document.getElementById('show')
+        const td = document.querySelectorAll('td:not(#input, #show)')
+
+
+        for (let i = 0; i < td.length; i++) {
+            td[i].addEventListener('click', function () {
+                // console.log(td[i].innerText)
+                // console.log(this)
+                if (td[i].innerText == '=') {
+                    show.innerText = eval(input.innerText)
+                } else if (td[i].innerText == 'C') {
+                    input.innerText = '0'
+                } else {
+                    if (input.innerText == '0') {
+                        input.innerText = td[i].innerText
+                    }
+                    else {
+                        input.insertAdjacentHTML('beforeend', td[i].innerText)
+                    }
+                }
+            })
+        }
+
+        document.addEventListener('keydown', function (e) {
+            console.log(e)
+            if (e.key === 'Enter') show.innerText = eval(input.innerText)
+            else if (!isNaN(parseInt(e.key)) ||
+                e.key === '+' ||
+                e.key === '-' ||
+                e.key === '*' ||
+                e.key === '/' ||
+                e.key === '.' ||
+                e.key === 'c'
+            ) if (input.innerText == '0') {
+                input.innerText = e.key
+            } else {
+                    input.insertAdjacentHTML('beforeend', e.key)
+                }
+        })
+
+        document.onkeydown = function (event) {
+            console.log(event)
+        }
+
+
+        window.addEventListener('keydown', function (e) {
+            console.log(e.code)
+        }, false);
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS__clock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 'Fjalla One', sans-serif;
+      /* outline: 1px solid gold; */
+    }
+
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(244, 246, 252);
+      position: relative;
+    }
+
+    .container {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
+
+    /* 手機 --------------------------------- */
+    .phone {
+      box-sizing: border-box;
+      border: 15px solid rgba(29, 29, 29, 1);
+      background-color: darkred;
+      width: 280PX;
+      height: 580px;
+      border-radius: 45px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      pointer-events: none;
+      box-shadow:
+        inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2),
+        /* inset 0px 0px 0px 2px #c8e2fd, */
+        /* inset 0px 0px 0px 1px #f7ffff, */
+        inset 0px 0px 0px 3px rgba(29, 29, 29, 9),
+        0px 0px 3px 1px rgb(82, 79, 79);
+      /* inset 0px 0px 0px 8px #d0e3f2; */
+    }
+
+    .face::after {
+      content: '';
+      background-color: rgba(29, 29, 29, 1);
+      width: 160px;
+      height: 26px;
+      border-radius: 10px;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      z-index: 999;
+    }
+
+    /* 跑馬燈 --------------------------------- */
+    .run-marquee {
+      width: 240px;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    #nowNumber,
+    #nowToday {
+      font-size: 150px;
+      line-height: 110px;
+      -webkit-text-stroke: 3px #fff;
+      -webkit-text-fill-color: transparent;
+    }
+
+    #datetime {
+      color: snow;
+    }
+
+    /* 時鐘部分 --------------------------------- */
+    .content {
+      width: 200px;
+      height: 200px;
+      border: 10px solid darkred;
+      /* background-color: rgba(255, 255, 255, 1); */
+      border-radius: 25px;
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #clock {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 2px solid firebrick;
+      background-color: snow;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #clock::before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      background-color: snow;
+      z-index: 1;
+      top: 10%;
+      left: 10%;
+    }
+
+    #clock::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 9%;
+      height: 9%;
+      border-radius: 50%;
+      background-color: #4F4F4F;
+      top: 45%;
+      left: 45%;
+      z-index: 10;
+    }
+
+    #hour {
+      width: 25%;
+      height: 3.8%;
+      background-color: darkred;
+      position: absolute;
+      top: 48.2%;
+      left: 50%;
+      transform-origin: left center;
+      z-index: 1;
+    }
+
+    #minute {
+      width: 40%;
+      height: 2.2%;
+      background-color: darkred;
+      position: absolute;
+      top: 48.9%;
+      left: 50%;
+      transform-origin: left center;
+      z-index: 1;
+    }
+
+    #second {
+      width: 56%;
+      height: 1%;
+      background-color: #4F4F4F;
+      position: absolute;
+      top: 49.5%;
+      left: 38.41%;
+      transform-origin: 20% center;
+      z-index: 1;
+    }
+
+    .scale {
+      width: 100%;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .line {
+      background-color: darkred;
+      transform-origin: center;
+      height: 1px;
+    }
+
+    .line-02 {
+      transform: rotate(30deg);
+    }
+
+    .line-04 {
+      transform: rotate(60deg);
+    }
+
+    .line-06 {
+      transform: rotate(90deg);
+    }
+
+    .line-08 {
+      transform: rotate(120deg);
+    }
+
+    .line-10 {
+      transform: rotate(150deg);
+    }
+
+    .line-12 {
+      transform: rotate(180deg);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="phone">
+      <div class="run-marquee">
+        <marquee id="nowNumber" align="middle" scrollamount="10" direction="left">測試！！！！</marquee>
+        <marquee id="nowToday" align="middle" scrollamount="13" direction="right">測試！！！！</marquee>
+        <marquee id="datetime" align="middle" scrollamount="7" direction="left">測試！！！！</marquee>
+      </div>
+      <div class="face"></div>
+      <div class="content">
+        <div id="clock">
+          <div class="scale">
+            <div class="line line-02"></div>
+            <div class="line line-04"></div>
+            <div class="line line-06"></div>
+            <div class="line line-08"></div>
+            <div class="line line-10"></div>
+            <div class="line line-12"></div>
+          </div>
+          <div id="face"></div>
+          <div id="hour"></div>
+          <div id="minute"></div>
+          <div id="second"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js'></script>
+  <script>
+
+
+    const datetime = document.getElementById('datetime')
+    const nowNumber = document.getElementById('nowNumber')
+    const nowToday = document.getElementById('nowToday')
+    const nowTime = function () {
+      const elHour = document.getElementById('hour')
+      const elMinute = document.getElementById('minute')
+      const elSecond = document.getElementById('second')
+      const date = new Date()
+      elHour.style.transform = `rotate(${(date.getHours() * 30) + (date.getMinutes() * 30 / 60) - 90}deg)` // 360/12/60
+      elMinute.style.transform = `rotate(${(date.getMinutes() * 6) + (date.getSeconds() * 6 / 60) - 90}deg)` // 360/60/60
+      elSecond.style.transform = `rotate(${date.getSeconds() * 6 - 90}deg)`
+    }
+    //  先讓點開的畫面顯示現在的時間，如果沒有先跑這個function的話
+    //  畫面一開會先是原本CSS寫的位置
+    nowTime()
+
+    // 執行每秒更新現在的時間(就會動了)
+    setInterval(nowTime, 1000)
+
+
+
+    function getnowNumberTime() {
+      const date = new Date()
+      const numberHour = date.getHours()
+      const numberMinutes = date.getMinutes()
+      const numberSeconds = date.getSeconds()
+      // 補0判斷
+      const fillZero = function (num) {
+        if (num < 10) {
+          return ('0' + num)
+        } else {
+          return (num)
+        }
+      }
+      const showNowTime = `${fillZero(numberHour)}:${fillZero(numberMinutes)}:${fillZero(numberSeconds)}`
+      nowNumber.innerHTML = showNowTime
+      setTimeout('getnowNumberTime()', 1000)
+    }
+    getnowNumberTime()
+
+
+    function getnowToday() {
+      const date = new Date()
+      const dayNamesEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      const i = date.getDay()
+      nowToday.innerHTML = dayNamesEn[i]
+    }
+    getnowToday()
+
+    function getnowDate() {
+      const date = new Date()
+      datetime.innerHTML = date + '  Hello, World ' + ' ' + date + '  Hello, World '
+      setTimeout('getnowDate()', 1000)
+    }
+    getnowDate()
+
+  </script>
+
+</body>
+
+</html>

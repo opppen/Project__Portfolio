@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <title>ジョジョの奇妙な冒険Part6 ストーンオーシャン</title>
+  <style>
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      /* outline: 1px solid yellowgreen; */
+      font-family: 'Noto Serif TC', serif;
+    }
+
+    body,
+    html {
+      width: 100%;
+      height: 100vh;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-image: url('./imgCard/JOJOBG-01.jpg');
+    }
+
+
+    /* 卡片尺寸 */
+    .card {
+      width: 75px;
+      min-height: 135px;
+      position: relative;
+      /* 設定子元素在3D空間內 */
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      /* float: left; */
+      margin: 8px;
+    }
+
+    /* 卡片正面 */
+    .card-front {
+      width: 100%;
+      height: 100%;
+      background-image: url('./imgCard/JOJO_card_P1.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      position: absolute;
+      transform: rotateY(180deg);
+      /* 翻過來後隱藏另外一面 */
+      backface-visibility: hidden;
+    }
+
+    .card-back {
+      width: 100%;
+      height: 100%;
+      background-image: url('./imgCard/JOJO_cardBK.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      position: absolute;
+      backface-visibility: hidden;
+      /* opacity: .5; */
+    }
+
+    /* JQ啟動的CSS */
+    .card-open {
+      transform: rotateY(180deg);
+    }
+
+    #game,
+    .AD {
+      max-width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .AD {
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 10px;
+      text-align: center;
+      display: none;
+      transition: 2s all;
+
+    }
+
+    .container {
+      width: 100%;
+      height: 100vh;
+      padding: 8%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .logo {
+      width: 60%;
+      margin: auto;
+      padding-bottom: 50px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    footer .copyright {
+      padding-top: 20px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    footer p {
+      font-size: 12px;
+      font-weight: 300;
+      padding-top: 5px;
+    }
+
+    .AD .pic {
+      width: 8%;
+      padding: 1%;
+      display: inline-block;
+    }
+
+    .AD h5 {
+      color: #ff645f;
+      font-size: 25px;
+    }
+
+    .AD h4 {
+      color: #3cd246;
+      font-size: 35px;
+    }
+
+    .AD h3 {
+      color: #ff645f;
+      font-size: 55px;
+
+    }
+
+    .AD p {
+      color: #b464ff;
+      font-size: 16px;
+      font-weight: 800;
+      padding-top: 10px;
+    }
+
+    .note {
+      /* width: 100%; */
+      height: auto;
+      /* color: #b464ff; */
+      color: black;
+      background-color: #3cd246;
+      border: 20px solid #b464ff;
+      text-align: center;
+      padding: 0 30px;
+      margin-top: -20px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      font-weight: 400;
+    }
+
+
+
+    @media (max-width: 576px) {
+      .logo {
+        width: 80%;
+        padding-bottom: 10px;
+      }
+
+      .container {
+        justify-content: flex-start;
+      }
+
+      .card {
+        width: 60px;
+        height: 108px;
+      }
+
+      .AD .pic {
+        padding-top: 20px;
+        width: 18%;
+      }
+
+      .AD h3 {
+        padding-top: 3%;
+        line-height: 1.3;
+      }
+
+      .AD span {
+        display: block;
+      }
+
+      footer {
+        padding-bottom: 50px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="./imgCard/img_logo.png" alt="">
+      </div>
+    </header>
+
+    <!-- <section class="note">想了解什麼是替身攻擊嗎？配對好就能馬上得知了！</section> -->
+    <!-- 產生卡片數量的範圍 -->
+    <div id="game"></div>
+    <section class="AD">
+      <h5>第13話~第24話</h5>
+      <h4>2022秋&nbsp;Netflix</h4>
+      <h3>全世界獨佔<span>播出</span></h3>
+      <p>石之海第一季線上熱映中</p>
+      <div class="pic">
+        <a href="https://www.netflix.com/tw/title/80179831">
+          <img src="./imgCard/netflix-new-logo.png" alt="">
+        </a>
+      </div>
+    </section>
+    <!-- 卡片樣本 -->
+    <!-- <div class="card">
+      <div class="card-front"></div>
+      <div class="card-back"></div>
+    </div> -->
+
+    <footer>
+      <div class="copyright">
+        ©荒木飛呂彦&LUCKY LAND COMMUNICATIONS/集英社・ジョジョの奇妙な冒険THE ANIMATION PROJECT
+      </div>
+      <p>
+        此為作業練習。版權是以上。素材部分來自JOJO官方頁面。人名替身名參考維基百科（Wikipedia)
+      </p>
+    </footer>
+  </div>
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js'></script>
+  <script>
+    // (((A)))產生卡片的數量(先預設16張)
+    /*
+      用for迴圈重複16次做
+      在#game的div內產生.append()卡片的語法
+    */
+    for (let i = 0; i < 16; i++) {
+      $('#game').append(`
+        <div class="card">
+          <div class="card-front"></div>
+          <div class="card-back"></div>
+        </div>  
+      `)
+    }
+
+    // (((B)))產生數字記號
+    /*
+    遊戲雙雙相對，所以我們預設16張，就是要讓數字重複兩次(8)
+    利用餘數製造重複率最多一定不會超過8,然後小於8的餘數都會是各自的數字
+    */
+    for (let i = 0; i < 8; i++) {
+      // -- 1 --製作號碼 
+      const num = i % 8 + 1 // 出來的順序就是 1 2 3 4 5 6 7 8
+      // A.先找到每個.card裡面的.card-front(正面)對它的CSS的背景圖屬性改套每張圖
+      $('.card').eq(i).find('.card-front').css('background-image', `url(./imgCard/JOJO_card_P${num}.png`)
+      $('.card').eq(i + 8).find('.card-front').css('background-image', `url(./imgCard/JOJO_card_S${num}.png`)
+      // B.針對每張正面的卡片加上編號(增加屬性data:號碼)
+      $('.card').eq(i).attr('data-card', num)
+      $('.card').eq(i + 8).attr('data-card', num).addClass('stand')
+
+      // // -- 2 --隨機打散
+      // Math.round()四捨五入 + Math.random()隨機產生小數
+      const target = Math.round(Math.random() * 7) // 我們有16張，但JS由0開始(所以是0~15)
+      // 先設定亂數跑出來的卡片號碼插在(指定的順序的卡片)後面
+      $('.card').eq(target).insertAfter($('.card').eq(i))
+      const targetS = Math.round(Math.random() * 7)
+      $('.card.stand').eq(targetS).insertAfter($('.card.stand').eq(i))
+    }
+
+    // (((c)))翻開卡片
+    $('#game').on('click', '.card', function () {
+      // 可以加上.card-open的條件 => (翻開的卡片沒有.card-open) + (現場卡片有加上.card-open不能超過2) --->最多一次翻兩張，而且這張牌沒有被翻開
+      if (!$(this).hasClass('card-open') && $('.card-open').length < 2) {
+        $(this).addClass('card-open')
+      }
+
+      // 如果已經翻開兩張了
+      if ($('.card-open').length === 2) {
+        // 消失 (如果翻開的第一張(.eq(0))和翻開的第二張的(.eq(1))的數字ID(data-card:num)一樣)
+        if ($('.card-open').eq(0).attr('data-card') === $('.card-open').eq(1).attr('data-card')) {
+          // 就增加(.card-ok)來標記
+          $('.card-open').addClass('card-ok')
+          // 淡出 已經打開的.card-open 的正面.card-front執行.fadeTo(1000, 0)
+          // fadeTo是針對opacity不透明度去做改變
+          $('.card-open .card-front').fadeTo(1000, 0)
+
+        }
+
+        // 重回蓋牌（不管是否有兩張相同都要把卡片翻回）
+        const backTo = function () {
+          // (防呆)對已經有加.card-open(被打開）的卡片做迴圈去找有這條件：當被打開的卡片的正面裡面的css不透明度不是1(透明)，將他的css屬性opacity改為0
+          $('.card-open').each(function () {
+            if ($(this).find('.card-front').css('opacity') !== '1') {
+              $(this).css('opacity', 0)
+            }
+          })
+          // 將所有卡片蓋回(移除card-open)
+          $('.card-open').removeClass('card-open')
+
+          // 判斷有加上card-ok(成功配對)的數量（預設6張＝3組) ，執行跳出
+          if ($('.card-ok').length === 16) {
+            // Swal.fire('你已經被替身攻擊了')
+            // Swal.fire({
+            //   title: '你已經被替身攻擊了！'
+            // })
+            $('#game').css('display', 'none')
+            $('.AD').css('display', 'block')
+          }
+        }
+        setTimeout(backTo, 1000)
+      }
+    })
+  </script>
+</body>
+
+</html>

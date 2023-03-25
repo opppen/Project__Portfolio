@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jq_zombie</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      font-family: 'Cormorant Infant', serif;
+      /* outline: 1px solid red; */
+    }
+
+
+    body {
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(244, 246, 252);
+      /* background-color: rgba(29, 29, 29, 1); */
+    }
+
+    .container {
+      width: 100%;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
+
+
+    /* 手機部分 */
+    .phone {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .outer-frame {
+      box-sizing: border-box;
+      border: 15px solid rgba(29, 29, 29, 1);
+      width: 280PX;
+      height: 580px;
+      border-radius: 45px;
+      box-shadow:
+        inset 0px 0px 0px 1px rgba(255, 255, 255, 0.2),
+        /* inset 0px 0px 0px 2px #c8e2fd, */
+        /* inset 0px 0px 0px 1px #f7ffff, */
+        inset 0px 0px 0px 3px rgba(29, 29, 29, 9),
+        0px 0px 3px 1px rgb(82, 79, 79);
+      /* inset 0px 0px 0px 8px #d0e3f2; */
+    }
+
+    .bangs {
+      background-color: rgba(29, 29, 29, 1);
+      width: 160px;
+      height: 26px;
+      border-radius: 15px;
+      position: absolute;
+      pointer-events: none;
+      left: 50%;
+      top: 19px;
+      transform: translateX(-50%);
+      /* z-index: 999; */
+    }
+
+    .game {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+      border-radius: 45px;
+      width: 280PX;
+      height: 580px;
+    }
+
+    .scoreboard {
+      border-radius: 45px 45px 0 0;
+      /* background-color: blue; */
+      height: 15%;
+      text-align: center;
+    }
+
+    .scoreboard p {
+      display: inline-block;
+      padding-top: 10px;
+      padding-bottom: 5px;
+      padding-right: 5px;
+      padding-left: 5px;
+      margin-top: 50px;
+      font-size: 20px;
+      font-weight: 300;
+      color: #8CEA00;
+    }
+
+
+    #game-range {
+      cursor: pointer;
+      /* cursor: url('/mouse_pointer_fist_preview.png') 50 50, auto; */
+      overflow: hidden;
+      height: 65%;
+      position: relative;
+    }
+
+    #game-range .ooo {
+      border-radius: 50%;
+      width: 3px;
+      height: 3px;
+      background-color: #8CEA00;
+      /* 用絕對定位的原因就是讓他範圍固定#game-range內 */
+      position: absolute;
+      transition: .5s;
+      animation-name: change;
+      animation-duration: 3s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+
+    }
+
+    .control {
+      width: 100%;
+      height: 20%;
+      text-align: center;
+      /* margin-bottom: 10%; */
+      position: relative;
+      /* background-color: red; */
+      border-radius: 0 0 45px 45px;
+      padding: 10px;
+    }
+
+    #start {
+      /* margin-top: 10px; */
+      width: 80%;
+      font-size: 18px;
+      color: #8CEA00;
+      border: 3px solid #8CEA00;
+      background-color: black;
+      border-radius: 25px;
+      padding: 3px;
+      cursor: pointer;
+      box-shadow:
+        inset 0px 0px 0px 1px rgba(122, 254, 129, 0.858);
+      margin-bottom: 5px;
+    }
+
+    .game-instructions {
+      color: #8CEA00;
+      font-size: 40px;
+      font-weight: 300;
+    }
+
+    .timeout {
+      width: 280PX;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-51%, -50%);
+      z-index: 999;
+      color: #8CEA00;
+      text-align: center;
+      font-size: 150px;
+      font-weight: 300;
+      line-height: .8;
+      letter-spacing: -15px;
+      /* display: none; */
+      transition: all 1s;
+      overflow: hidden;
+    }
+
+    @keyframes change {
+      0% {
+        transform: scale(.5);
+      }
+
+      50% {
+        transform: scale(80);
+      }
+
+      100% {
+        transform: scale(.5);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="game">
+      <div class="scoreboard">
+        <p>POINTS：<span id="score">0</span></p>
+        <p>TIME：<span id="sec">30</span></p>
+      </div>
+      <div id="game-range"></div>
+      <div class="control">
+        <input type="button" value="Press" id="start">
+        <div class="game-instructions">
+          <p>KEEP BLACK</p>
+        </div>
+      </div>
+    </div>
+    <div class="timeout">
+      <p>TIME</p>
+      <!-- <p><span id="lastScore"></span></p> -->
+      <p>OUT</p>
+    </div>
+
+    <div class="phone">
+      <div class="outer-frame"></div>
+      <div class="bangs"></div>
+    </div>
+
+
+  </div>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+  <script>
+    /*
+    */
+    $(function () {
+      let score = 0
+      let sec = 30
+      let gametimer = 0
+      let iD = 0
+      // 亂數
+      const rand = (num) => {
+        return Math.round(Math.random() * num)
+      }
+
+
+      const moving = (input_iD) => {
+        $(`#ooo-${iD}`).animate({
+          right: rand(100) + '%',
+          left: rand(100) + '%',
+          top: rand(100) + '%',
+          bottom: rand(100) + '%'
+        }, 3, function () {
+          moving(iD)
+        })
+        // 3000是預設移動的速度
+      }
+
+      // [ 開始遊戲按下start按鈕後會產生的 ]-------------------------------------------
+      $('#start').on('click', function () {
+        // A.開始的按鈕功能禁用
+        $(this).attr('disabled', true)
+        $(this).css('color', 'black')
+        // B.重新設定時間跟分數
+        sec = 30
+        $('#sec').text(sec)
+        score = 0
+        $('#score').text(score)
+        $('.timeout').css('display', 'none')
+        // C.開始倒數後會發生的事情 (倒數計時器)
+        gametimer = setInterval(() => {
+          // a.秒數減1,修改文字
+          sec--
+          $('#sec').text(sec)
+          // b.如果秒數到0
+          if (sec == 0) {
+            // 重製gametimer
+            clearInterval(gametimer)
+            // 開始按鈕功能啟動
+            $('#start').attr('disabled', false)
+            $('#start').css('color', '#8CEA00')
+            // 定時器結束後會做的事情，只執行一次。會設定100毫秒0.1s是為了倒數時間結束後馬上執行會的東西
+            setTimeout(() => {
+              // 彈出時間到的訊息
+              // alert('時間到！')
+              $('#lastScore').text(score)
+              $('.timeout').css('display', 'block')
+
+              // setTimeout(function () {
+              //   $('.timeout').css('display', 'none')
+              // }, 5000)
+
+              // 所有跑出來的東西消除
+              $('#game-range .ooo').remove()
+            }, 100)
+            // setInterval 回循環執行    // setTimeout 只會執行一次
+          }
+
+          // D.隨機出現
+          let num = rand(20)
+          if (num > 8) {
+            // [產生動態DOM]
+            // 在html的<div id=game>後產生<img id=“zb${iD}">
+            $('#game-range').append(`<div class="ooo" id="ooo-${iD}">`)
+            // 產生的img 個別加上.css隨機出現的位置
+            $(`#ooo-${iD}`).css({
+              right: rand(100) + '%',
+              left: rand(100) + '%',
+              // top: rand(100) + '%',
+              // bottom: rand(100) + '%',
+              'transform': `scale(${rand(70)})`,
+              // 'transition': 'scale 10s'
+              // 'transitionDelay': '1s'
+            })
+            // 執行移動function
+            moving(iD)
+            // 數量+1
+            iD++
+            console.log(iD)
+          }
+        }, 1000) // 這邊是設定秒數倒數的速度
+      })
+
+      // [ 當點擊到img圖片的時候 ]-------------------------------------------
+      // 我點到的時候：1.消除點到的東西  2.分數＋1  3.計分表文字改成我現在＋1後的分數
+      $('#game-range').on('click', 'div', function () {
+        // A換圖片
+        // $(this).css('backgroundColor', 'black')
+        // $(this).stop()
+
+        $(this).remove()
+        $(this).css('pointer-events', 'none')
+        score++
+        $('#score').text(score)
+      })
+
+    })
+  </script>
+</body>
+
+</html>
