@@ -105,7 +105,11 @@ p {
   position: relative;
   display:inline-block;
   font-weight: 300;
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
 }
+
 
 .scroll::after {
   content: '';
