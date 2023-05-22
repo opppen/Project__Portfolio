@@ -101,17 +101,21 @@ p {
 }
 
 .scroll {
-  margin-top: 15%;
+  margin-bottom: 10%;
   position: relative;
-  display:inline-block;
+  display: inline-block;
   font-weight: 300;
   text-decoration: none;
   cursor: pointer;
   color: #000;
+  border-radius: 25px;
+  padding: 2px 20px;
+  transition: all 0.5s;
 }
 
+.scroll:hover { outline: 1px solid #000;}
 
-.scroll::after {
+.scroll::after, .scroll::before {
   content: '';
   position: absolute;
   top: 35px;
@@ -121,13 +125,42 @@ p {
   border-bottom: 1px solid #000;
   border-right: 1px solid #000;
   transform: rotate(45deg) translateX(-50%);
+  animation: runing 2s ease-in-out infinite;
+  opacity: 0;
 }
 
-.logo {
-  width: 30%;
+.scroll::before {  animation-delay: 1s; }
 
+@keyframes runing {
+  0% { 
+    top: 35px;
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+  }
+  100% { 
+    top: 60px;
+    opacity: 0;
+  }
 }
 
+.logo { width: 30%; }
+
+.opening {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+@media screen and (max-width: 576px) {
+  .opening {
+    flex-direction: column;
+    margin-top: 20%;
+  }
+}
+
+main { margin-top: 20%;}
 /* work-experience ---------------------------------------- */
 
 .work-item  {
@@ -160,6 +193,7 @@ p {
 .project-item {
   width: 100%;
 }
+
 article > .project-item {
   margin-bottom: 80px;
 }

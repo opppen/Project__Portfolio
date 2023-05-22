@@ -11,87 +11,27 @@
 
 <body>
   <div class="container">
-    <header>
-      <div class="header">
+    <header class="header">
         <div class="logo">
           <img src="./assets/20221001_P_ill_monster001.png" alt="monster001">
         </div>
-        <h1>Hello</h1>
-        <h2>I am PLUS</h2>
+        <div class="opening">
+          <div class="remark" style="text-align: center;">
+            <h1>Hello</h1>
+            <h2>I am PLUS</h2>
+          </div>
+          <a href="#project" class="scroll">Scroll</a>
+        </div>
+
         <!-- <div class="scroll">
           <a href="#work-experience">Scroll</a>
         </div> -->
-        <a href="#work-experience" class="scroll">Scroll</a>
-      </div>
+
     </header>
     
     <main>
-      <!-- 經歷 -->
-      <section class="work-experience" id="work-experience">
-        <hgroup>
-          <h4>Work Experience</h4>
-          <p>工作經歷</p>
-        </hgroup>
-        <article>
-          <div class="work-item">
-            <h4>前端網頁開發技術</h4>
-            <h6>職訓局</h6>
-            <p>2022/3~2022/9</p>
-            <ul>
-              <li>前端開發 (HTML、CSS 及 JavaScript 應用，使用 Bootstrap、jQuery、Vue.js、Vuetify 處理 RWD 網頁)</li>
-              <li>後端技術 ( Node.js 及 MongoDB 資料庫建立)</li>
-              <li>Figma 規劃流程與介面設計、透過 RESTful API 串接資料及利用 Git 版本控制管理專案</li>
-            </ul>
-          </div>
-          <div class="work-item">
-            <h4>視覺網頁設計</h4>
-            <h6>台灣特思爾大宇宙股份有限公司</h6>
-            <p>2017/7~2021/8</p>
-            <ul>
-              <li>調整網頁與手機上 UI 以及活動視覺設計 Banner 呈現。</li>
-              <li>改善資訊呈現更適合使用者觀看及操作。</li>
-              <li>處理活動檔期視覺設計。編排吸晴刺激消費畫面規劃並協助提出消費者使用習慣。</li>
-            </ul>
-          </div>
-          <div class="work-item">
-            <h4>平面設計</h4>
-            <h6>翰柘創意廣告</h6>
-            <p>2010/1~2011/4</p>
-            <ul>
-              <li>品牌 CI 規劃。</li>
-              <li>網頁視覺設計。</li>
-              <li>包裝設計提案。</li>
-            </ul>
-          </div>
-          <div class="work-item">
-            <h4>網頁平面設計</h4>
-            <h6>悠美醫療集團</h6>
-            <p>2009/4~2009/12</p>
-            <ul>
-              <li>院內視覺設計規劃：海報製作，DM 製作，CI 設計，平面刊物設計。</li>
-              <li>從無到有協助架構官網。後續網頁管理維護。</li>
-              <li>配合產品行銷經理協助對外廣告視覺呈現。</li>
-            </ul>
-          </div>
-          <div class="work-item">
-            <h4>專櫃人員</h4>
-            <h6>台灣玩具反斗城</h6>
-            <p>2008/9~2010/9</p>
-            <ul>
-              <li>規劃賣場商品放置動線。</li>
-              <li>聆聽了解客人需求，並推薦商品。</li>
-              <li>請支援收銀的情況下。提供更好的客戶體驗。</li>
-            </ul>
-          </div>
-          <div class="work-item">
-            <h4>工業設計系 畢業</h4>
-            <h6>國立聯合大學</h6>
-            <!-- <p>2003/9~2007/6</p> -->
-          </div>
-        </article>
-      </section>
       <!-- 作品 -->
-      <section class="project">
+      <section class="project" id="project">
         <hgroup>
           <h4>Project</h4>
           <p>專案設計</p>
@@ -173,6 +113,72 @@
 
         </article>
       </section>
+
+      <!-- 經歷 -->
+      <section class="work-experience" id="work-experience">
+        <hgroup>
+          <h4>Work Experience</h4>
+          <p>工作經歷</p>
+        </hgroup>
+        <article>
+          <div class="work-item">
+            <h4>前端網頁開發技術</h4>
+            <h6>職訓局</h6>
+            <p>2022/3~2022/9</p>
+            <ul>
+              <li>前端開發 (HTML、CSS 及 JavaScript 應用，使用 Bootstrap、jQuery、Vue.js、Vuetify 處理 RWD 網頁)</li>
+              <li>後端技術 ( Node.js 及 MongoDB 資料庫建立)</li>
+              <li>Figma 規劃流程與介面設計、透過 RESTful API 串接資料及利用 Git 版本控制管理專案</li>
+            </ul>
+          </div>
+          <div class="work-item">
+            <h4>視覺網頁設計</h4>
+            <h6>台灣特思爾大宇宙股份有限公司</h6>
+            <p>2017/7~2021/8</p>
+            <ul>
+              <li>調整網頁與手機上 UI 以及活動視覺設計 Banner 呈現。</li>
+              <li>改善資訊呈現更適合使用者觀看及操作。</li>
+              <li>處理活動檔期視覺設計。編排吸晴刺激消費畫面規劃並協助提出消費者使用習慣。</li>
+            </ul>
+          </div>
+          <div class="work-item">
+            <h4>平面設計</h4>
+            <h6>翰柘創意廣告</h6>
+            <p>2010/1~2011/4</p>
+            <ul>
+              <li>品牌 CI 規劃。</li>
+              <li>網頁視覺設計。</li>
+              <li>包裝設計提案。</li>
+            </ul>
+          </div>
+          <div class="work-item">
+            <h4>網頁平面設計</h4>
+            <h6>悠美醫療集團</h6>
+            <p>2009/4~2009/12</p>
+            <ul>
+              <li>院內視覺設計規劃：海報製作，DM 製作，CI 設計，平面刊物設計。</li>
+              <li>從無到有協助架構官網。後續網頁管理維護。</li>
+              <li>配合產品行銷經理協助對外廣告視覺呈現。</li>
+            </ul>
+          </div>
+          <div class="work-item">
+            <h4>專櫃人員</h4>
+            <h6>台灣玩具反斗城</h6>
+            <p>2008/9~2010/9</p>
+            <ul>
+              <li>規劃賣場商品放置動線。</li>
+              <li>聆聽了解客人需求，並推薦商品。</li>
+              <li>請支援收銀的情況下。提供更好的客戶體驗。</li>
+            </ul>
+          </div>
+          <div class="work-item">
+            <h4>工業設計系 畢業</h4>
+            <h6>國立聯合大學</h6>
+            <!-- <p>2003/9~2007/6</p> -->
+          </div>
+        </article>
+      </section>
+
       <!-- 關於我 -->
       <section class="about">
         <hgroup>
