@@ -125,8 +125,8 @@ p {
   border-bottom: 1px solid #000;
   border-right: 1px solid #000;
   transform: rotate(45deg) translateX(-50%);
-  animation: runing 2s ease-in-out infinite;
   opacity: 0;
+  animation: runing 2s ease-in-out infinite;
 }
 
 .scroll::before {  animation-delay: 1s; }
