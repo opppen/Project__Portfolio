@@ -110,10 +110,10 @@ p {
   color: #000;
   border-radius: 25px;
   padding: 2px 20px;
-  transition: all 0.5s;
+  transition: all 0.8s;
 }
 
-.scroll:hover { outline: 1px solid #000;}
+/* .scroll:hover { outline: 1px solid #000;} */
 
 .scroll::after, .scroll::before {
   content: '';
@@ -146,6 +146,33 @@ p {
 }
 
 .logo { width: 30%; }
+
+
+.logo-mg {
+  width: 30%;
+  display: flex;
+  position: relative;
+}
+
+.logo-mg img:first-child {
+  animation: logoWhirl 10s ease-in-out infinite;
+}
+
+@keyframes logoWhirl {
+  0% { 
+    transform: rotate(0);
+  }
+  50% { 
+    transform: rotate(180deg);
+  }
+  100% { 
+    transform: rotate(0);
+  }
+}
+
+.logo-mg img:last-child {
+  position: absolute;
+}
 
 .opening {
   display: flex;
