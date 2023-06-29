@@ -154,7 +154,12 @@ p {
 }
 
 .logo-mg img:first-child { animation: logoWhirl 10s ease-in-out infinite; }
-.logo-mg img:last-child { position: absolute; }
+.logo-mg img:last-child { 
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 @keyframes logoWhirl {
   0% { 
     transform: rotate(0);
