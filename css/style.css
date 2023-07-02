@@ -382,6 +382,8 @@ footer {
 @media screen and (max-width:768px) {
 
   .project-list {
+    display: grid;
+    width: 100%;
     gap: 30px;
   }
 
