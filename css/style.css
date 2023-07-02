@@ -245,6 +245,24 @@ main { margin-top: 20%;}
   overflow: hidden;
 }
 
+.project-item .pic img {
+  animation: scalePic  20s ease-in-out infinite;
+}
+
+
+@keyframes scalePic {
+  0% { 
+    transform: scale(1);
+  }
+  50% { 
+    transform: scale(1.2);
+  }
+  100% { 
+    transform: scale(1);
+  }
+}
+
+
 .project-item .text {
   width: 90%;
   padding: 20px 10px;
@@ -352,7 +370,7 @@ footer {
     padding-block: 20px;
     max-height: 150px;
     box-shadow: unset;
-    transition: all 0.25s ease-out;
+    transition: all 0.1s ease-out;
   }
 
   .project-list:hover .project-item {
