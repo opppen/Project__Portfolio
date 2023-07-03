@@ -76,7 +76,7 @@ hgroup h4 {
   padding-block: 10px 20px;
   border-bottom: 1px solid rgb(169, 169, 169);
   z-index: 10;
-  margin-inline: 2%;
+  margin: 0 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -102,10 +102,6 @@ hgroup h4 {
   line-height: 1;
   align-items: center;
 }
-
-/* .time-header * {
-  outline: 1px solid red;
-} */
 
 .time-header .m-d-w .month {
   font-size: 1.5rem;
@@ -145,7 +141,7 @@ hgroup h4 {
   align-items:center;
   justify-content: center;
   height: 100vh;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .header h1 {
