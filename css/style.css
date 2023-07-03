@@ -301,7 +301,8 @@ hgroup h4 {
   .logo-mg { width: 60%; }
 
   .opening {
-    flex-direction: column;
+    display: grid;
+    gap: 50px;
     margin-top: 20%;
   }
 }
