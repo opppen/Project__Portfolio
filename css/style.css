@@ -13,10 +13,12 @@ html {
   height: 100vh;
   width: 100%;
   scroll-behavior: smooth;
+  font-size: 62.5%;
 }
 
 body {
   background-color: #f5f5f5;
+  font-size: 1.6rem;
 }
 
 /* 共用區 ---------------------------------------- */
@@ -63,7 +65,79 @@ hgroup h4 {
 }
 
 
-/* header ---------------------------------------- */
+/* --------------------------------------- 
+  time-header 
+---------------------------------------- */
+.time-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-block: 10px 20px;
+  border-bottom: 1px solid rgb(169, 169, 169);
+  z-index: 10;
+  margin-inline: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(245, 245, 245, 0.9);
+}
+
+.time-header .slogan {
+  width: max-content;
+  text-transform: uppercase;
+  padding: 15px 12px;
+  font-size: 1.4rem;
+  letter-spacing: 1.3px;
+  color: #fff;
+  background-color: rgb(22, 37, 104);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.time-header .m-d-w {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 2px;
+  line-height: 1;
+  align-items: center;
+}
+
+/* .time-header * {
+  outline: 1px solid red;
+} */
+
+.time-header .m-d-w .month {
+  font-size: 1.5rem;
+}
+
+.time-header .m-d-w .month::after {
+  content: '/';
+  font-size: 0.5rem;
+  padding-left: 5px;
+}
+
+.time-header .m-d-w .day {
+  font-size: 5.5rem;
+  font-weight: 300;
+  letter-spacing: -2px;
+}
+
+.time-header .m-d-w .week {
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+}
+
+.time-header .m-d-w .wrap {
+  display: grid;
+  text-align: end;
+  grid-template-rows: 23px;
+}
+
+/* --------------------------------------- 
+  header 
+---------------------------------------- */
 
 .header {
   display: flex;
@@ -71,6 +145,7 @@ hgroup h4 {
   align-items:center;
   justify-content: center;
   height: 100vh;
+  margin-top: 80px;
 }
 
 .header h1 {
@@ -89,8 +164,6 @@ hgroup h4 {
   padding: 2px 20px;
   transition: all 0.8s;
 }
-
-/* .scroll:hover { outline: 1px solid #000;} */
 
 .scroll::after, .scroll::before {
   content: '';
@@ -231,7 +304,8 @@ hgroup h4 {
 }
 
 .project-item .pic {
-  width: 100%;
+  position: relative;
+  min-width: 100%;
   height: 180px;
   overflow: hidden;
 }
@@ -243,15 +317,12 @@ hgroup h4 {
 
 @keyframes scalePic {
   0% {
-    border-radius: 20px 20px 0 0;
     transform: scale(1.05);
   }
   50% {
-    border-radius: 20px 20px 0 0;
     transform: scale(1.2);
   }
   100% {
-    border-radius: 20px 20px 0 0;
     transform: scale(1);
   }
 }
@@ -382,6 +453,7 @@ footer {
   }
 
   .project-item .pic {
+    min-width: unset;
     width: 20%;
     max-width: 100px;
     border-radius: 20px;

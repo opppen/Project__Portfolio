@@ -11,6 +11,17 @@
 
 <body ontouchstart="">
   <div class="container">
+    <div class="time-header">
+      <div class="slogan">every second counts</div>
+      <div class="m-d-w">
+        <div class="wrap">
+          <span class="month">07</span>
+          <span class="week">MON</span>
+        </div>
+        <span class="day">03</span>
+
+      </div>
+    </div>
     <header class="header">
         <div class="logo-mg">
           <img src="./assets/monster00101.png" alt="monster001">
@@ -271,6 +282,17 @@
     完整內容高度 (scrollHeight) 
     捲軸本身高度 (clientHeight)
     */
+
+    const lang = navigator.language
+    const date = new Date()
+    const dayNumber = date.getDate()
+    const month = date.getMonth()
+    const weekName = date.toLocaleString(lang, { weekday: 'long'})
+    const monthName = date.toLocaleString(lang, { month: 'long'})
+
+    document.querySelector('.month').innerHTML = monthName
+    document.querySelector('.week').innerHTML = weekName
+    document.querySelector('.day').innerHTML = dayNumber
   </script>
 
 </body>
