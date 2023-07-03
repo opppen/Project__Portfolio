@@ -233,14 +233,14 @@ hgroup h4 {
 .project-item .pic {
   width: 100%;
   height: 180px;
-  border-radius: 25px 25px 0 0 ;
-  animation: scalePic  20s ease-in-out infinite;
 }
 
-/* .project-item .pic img {
-  overflow: hidden;
+.project-item .pic img {
+  /* overflow: hidden;
+  border-radius: 25px 25px 0 0 ; */
+  border-radius: 20px 20px 0 0;
   animation: scalePic  20s ease-in-out infinite;
-} */
+}
 
 
 @keyframes scalePic {
@@ -267,8 +267,8 @@ hgroup h4 {
   margin-left: auto;
   background-color: #1CC18E;
   color: #fff;
-  width: 100%;
-  height: 30px;
+  width: 80px;
+  height: 35px;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -279,7 +279,11 @@ hgroup h4 {
 }
 
 
-/* footer 
+
+
+
+/* --------------------------------------- 
+  footer 
 ---------------------------------------- */
 footer {
   text-align: center;
@@ -291,8 +295,9 @@ footer {
 
 
 
-
-/* gototop ---------------------------------------- */
+/* --------------------------------------- 
+  gototop 
+---------------------------------------- */
 #gototop {
   position: fixed;
   bottom: 5%;
@@ -332,6 +337,17 @@ footer {
 }
 
 
+
+
+
+
+
+
+
+
+/* --------------------------------------- 
+  @media screen and (min-width:768px) 
+---------------------------------------- */
 @media screen and (min-width:768px) {
  
   .project-list {
@@ -414,6 +430,7 @@ footer {
 
   .project-item .pic img {
     animation: unset;
+    border-radius: 20px;
   }  
 
 }
