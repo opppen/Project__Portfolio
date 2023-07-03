@@ -233,6 +233,7 @@ hgroup h4 {
 .project-item .pic {
   width: 100%;
   height: 180px;
+  border-radius: 25px 25px 0 0 ;
   animation: scalePic  20s ease-in-out infinite;
 }
 
