@@ -38,11 +38,11 @@
             <p>SCROLL</p>
           </a>
         </div>
-
-        <!-- <div class="scroll">
-          <a href="#work-experience">Scroll</a>
-        </div> -->
-
+        <div class="text__circle">
+          <picture>
+            <img src="./assets/text__circle.png" alt="">
+          </picture>
+        </div>
     </header>
     
     <main>
@@ -236,13 +236,21 @@
     <div id="gototop">
       <span id="gototop-value"></span>
     </div>
+
   </div>
 
   <script>
     // https://shubo.io/element-size-scrolling/
 
 
-    const gototopScroll = function () {
+
+
+
+
+    // ===================================
+    // 設定goToTop
+    // ===================================
+    const goToTopScroll = function () {
       const gototop = document.getElementById('gototop')
       const gototopValue = document.getElementById('gototop-value')
       const lastHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
@@ -276,8 +284,8 @@
       gototop.style.background = `conic-gradient(#00a0e8 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`
     }
 
-    window.onscroll = gototopScroll
-    window.onload = gototopScroll
+    window.onscroll = goToTopScroll
+    window.onload = goToTopScroll
 
     /*
     取得整個文件的寬度/高度 可以用 document.documentElement 這個特殊的DOM node (對應於html)
@@ -287,6 +295,22 @@
     捲軸本身高度 (clientHeight)
     */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ===================================
+    // 設定時間
+    // ===================================
     const lang = navigator.language
     const date = new Date()
     const dayNumber = date.getDate()
@@ -297,6 +321,11 @@
     document.querySelector('.month').innerHTML = monthName
     document.querySelector('.week').innerHTML = weekName
     document.querySelector('.day').innerHTML = dayNumber
+
+
+
+
+    
   </script>
 
 </body>
