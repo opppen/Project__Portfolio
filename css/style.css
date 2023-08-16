@@ -478,6 +478,30 @@ footer {
 
 
 
+/* --------------------------------------- 
+  text__circle 
+---------------------------------------- */
+.text__circle {
+  position: absolute;
+  left: -400px;
+  bottom: -55%;
+  z-index: -50;
+  max-width: 800px;
+  /* opacity: 0.7; */
+  animation: CircleRotation 50s infinite linear;
+}
+
+
+@keyframes CircleRotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); } 
+}
+
+
+
+
+
+
 
 
 
@@ -589,22 +613,4 @@ footer {
     top: 120px;
   }
 
-}
-
-
-
-.text__circle {
-  position: absolute;
-  left: -400px;
-  bottom: -55%;
-  z-index: -50;
-  max-width: 800px;
-  /* opacity: 0.7; */
-  animation: CircleRotation 50s infinite linear;
-}
-
-
-@keyframes CircleRotation {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); } 
 }
