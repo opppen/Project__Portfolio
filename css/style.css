@@ -389,6 +389,19 @@ hgroup h4 {
   overflow: hidden;
 }
 
+.search-weather {
+  background-color: #0336FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-weather p {
+  color: #FFDE03;
+  font-size: 5rem;
+  font-weight: 700;
+}
+
 .project-item .pic img {
   animation: scalePic 15s ease-in-out infinite;
 }
@@ -555,6 +568,14 @@ footer {
     max-width: 300px;
     max-height: 300px; 
   }
+
+
+  .search-weather p {
+    color: #FFDE03;
+    font-size: 1.8rem;
+  }
+
+
 
   .project-item .text {
     width: 75%;

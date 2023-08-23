@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SearchWeather</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <h1 class="nav-title">
+          <span class="en">36Hour</span>
+          <span class="zh">天氣預報</span>
+          <!-- <p class="describe">更新頻率: 每6小時</p> -->
+        </h1>
+        
+        <form>
+          <input type="search" placeholder="請輸入縣市...." aria-label="Search" class="form-contorl input-search">
+          <button type="submit" class="btn-search">
+            <span class="material-symbols-outlined icon-search">search</span>
+          </button>
+        </form>
+      </nav>
+
+      <main class="main-content">
+        <div class="wrap">
+          <section class="now-section">
+            <!-- <div class="now-content">
+              <h1>locationName</h1>
+              <span>somatosensory</span>
+              <div>temperature°C</div>
+              <div>weather</div>
+              <div>降雨機率 : chance%</div>
+            </div> -->
+          </section>
+    
+          <section class="future-section">
+            <h1>com<span>i</span>ng</h1>
+            <div class="row futute-title">
+              <div class="col">天氣狀況</div>
+              <div class="col">氣溫</div>
+              <div class="col">降雨機率</div>
+              <div class="col">舒適度</div>
+            </div>
+  
+            <div class="future-list">
+              <!-- <div class="row future-item">
+                <div class="col">weather</div>
+                <div class="col">temperature °C</div>
+                <div class="col">probabilityOfPrecipitation %</div>
+                <div class="col">comfortIndex</div>
+              </div> -->
+            </div>
+          </section>
+        </div>
+
+        <div class="loader">
+          <div class="loader__wrap">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+          </div>
+        </div>
+      </main>
+      
+      <footer></footer>
+    </div>
+
+
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.js">// axios</script>
+  <script src="js/javascript.js"></script>
+</body>
+</html>
