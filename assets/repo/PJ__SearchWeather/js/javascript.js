@@ -1,6 +1,8 @@
 const apiLink = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-F2013C4D-6FC9-41F4-9898-0D46C70E00C3'
 // const apiLink = 'https://api.openweathermap.org/data/2.5/box/city?bbox=120,19,122,30,10&appid=cb9de36bbd3a6969b700004716fd3036'
 
+// https://opendata.cwa.gov.tw/index
+
 let weatherData = []
 const btnSearch = document.querySelector('.btn-search')
 const inputSearch = document.querySelector('.input-search')
