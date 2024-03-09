@@ -99,9 +99,9 @@ const showFutureWeater = function (cityInfo) {
         const weather = cityInfo.weatherElement[0].time[i].parameter.parameterName
         // 降雨機率(%)
         const probabilityOfPrecipitation = cityInfo.weatherElement[1].time[i].parameter.parameterName
+        // 平均溫度(°C)
         const minTemperature = Number(cityInfo.weatherElement[2].time[i].parameter.parameterName)
         const maxTemperature = Number(cityInfo.weatherElement[4].time[i].parameter.parameterName)
-        // 平均溫度(°C)
         const temperature = Math.ceil( (maxTemperature + minTemperature) / 2 )
         // 舒適度
         const comfortIndex	 = cityInfo.weatherElement[3].time[i].parameter.parameterName
