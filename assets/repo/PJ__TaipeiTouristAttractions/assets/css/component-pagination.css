@@ -1,0 +1,29 @@
+.pagination {
+  text-align: center;
+  margin: 10rem auto 0;
+}
+
+.pagination-item {
+  display: inline-flex;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 5px;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  outline: 1px solid black;
+  justify-content: center;
+  align-items: center;
+}
+.pagination-item:hover,
+.pagination-item.js--active {
+
+  /* background-color: var(--primary);
+  color: var(--tertiary); */
+  background-color: black;
+  color: #fff;
+}
+
+
+ @media(max-width: 900px) {}

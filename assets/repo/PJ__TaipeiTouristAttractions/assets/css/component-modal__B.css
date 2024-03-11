@@ -1,0 +1,238 @@
+/*************************************************************
+/* modal
+*************************************************************/
+body.js--isModalShow {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.js--isModalShow .modal {
+  opacity: 1;
+  z-index: 999;
+}
+
+.modal__dialog {
+  position: relative;
+  margin: 5%;
+  max-width: 90rem;
+  height: 50rem;
+}
+
+.modal__dialog__wrap {
+  border-radius: 2rem;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  display: flex;
+  height: 100%;
+  /* height: max-content; */
+
+}
+
+.modal__pic {
+  flex: 1;
+  /* background-image: url('http://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000942.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+
+}
+
+
+
+
+
+.modal__content {
+  /* background-color: var(--color-white); */
+  flex: 2;
+  padding: 5%;
+}
+
+
+.modal__title {
+  font-size: 3.5rem;
+}
+
+.modal__content p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+  letter-spacing: 0.5px;
+}
+
+.modal__description {
+  margin: 6% 0 5%;
+  overflow-y: overlay;
+  max-height: 12rem;
+  padding-right: 2%;
+  /* border: 1px solid var(--color-primary);
+  border-radius: 2rem 0 0 2rem; */
+}
+
+/* 滾條狀態區塊 */
+.modal__description::-webkit-scrollbar {
+  /* display: none;  */
+  width: 0.5rem;
+}
+
+/* 滾條頭尾區塊 */
+.modal__description::-webkit-scrollbar-button {
+  background-color: var(--color-gray);
+  height: 0.8rem;
+}
+
+/* 滾條位置區塊 */
+.modal__description::-webkit-scrollbar-track-piece {
+  background-color: var(--color-tertiary);
+}
+
+/* 滾條移動位置區塊 */
+.modal__description::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+}
+
+/* .modal__description::-webkit-scrollbar-track {
+  box-shadow: 0px 0px 0px 1px rgb(35, 186, 197);
+} */
+
+.modal__category__item {
+  margin: 2% 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.modal__category__name {
+  /* border: 1px solid var(--color-primary); */
+  color: var(--color-text);
+  background-color: var(--color-white);
+  padding: 0.45rem 2rem;
+  border-radius: 2rem;
+  margin-right: 1rem;
+  width: 12rem;
+  text-align: center;
+}
+
+p.modal__category__content {
+  max-width: 30rem;
+}
+
+
+
+
+
+
+
+
+
+.modal .btn-close {
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+  background-color: var(--color-white);
+  color: var(--color-secondary);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+@media(max-width: 900px) {}
+
+
+
+@media(max-width: 768px) {
+
+  /* .modal {
+    align-items: flex-start;
+  } */
+
+  .modal__dialog {
+    position: relative;
+    margin: 6%;
+    max-width: 90rem;
+    height: 95%;
+
+  }
+
+  .modal__dialog__wrap {
+    flex-direction: column;
+    overflow-y: overlay;
+  }
+
+  .modal__pic {
+    flex: 0;
+    height: 35%;
+    /* background-image: url('http://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000942.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+  }
+
+  .modal__title {
+    font-size: 2.5rem;
+  }
+
+  .modal__category__item {
+    margin: 5% 0;
+    flex-direction: column;
+  }
+
+  .modal__category__name {
+    padding: 0.45rem 2rem;
+    border-radius: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .modal__description {
+    margin: 8% 0;
+    overflow-y: initial;
+    max-height: initial;
+  }
+
+  .modal__dialog__wrap {
+    border-radius: 2rem 0 0 2rem;
+  }
+
+  /* 滾條狀態區塊  */
+  .modal__dialog__wrap::-webkit-scrollbar {
+    /* display: none;  */
+    width: 0.5rem;
+  }
+
+  /* 滾條頭尾區塊 */
+  .modal__dialog__wrap::-webkit-scrollbar-button {
+    background-color: var(--color-gray);
+    height: 0.5rem;
+  }
+
+  /* 滾條位置區塊 */
+  .modal__dialog__wrap::-webkit-scrollbar-track-piece {
+    background-color: var(--color-tertiary);
+  }
+
+  /* 滾條移動位置區塊 */
+  .modal__dialog__wrap::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+  }
+}

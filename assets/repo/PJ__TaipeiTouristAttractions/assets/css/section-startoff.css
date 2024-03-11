@@ -1,0 +1,128 @@
+ /* .start-off * { outline: 1px solid red; } */
+
+
+ .start-off {
+   /* background-image:url(https://images.unsplash.com/photo-1614418797356-0cb32a9403e7?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) ; */
+   background-image: linear-gradient(var(--color-primary), rgba(252, 247, 225, 0.93) 90%), url(https://images.unsplash.com/photo-1614418797356-0cb32a9403e7?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   /* background-color: var(--color-primary); */
+   /* background-blend-mode: multiply; */
+   height: auto;
+ }
+
+
+
+ .start-off .content {
+   max-width: 120rem;
+   margin: 0 auto;
+   padding: 0 5%;
+ }
+
+ .start-off .captain__title {
+  text-align: center;
+}
+
+ .start-off .captain__title::after {
+  bottom: 20%;
+  left: 50%;
+  width: 15vw;
+  height: 0.2rem;
+  transform: translateX(-50%);
+}
+
+
+
+
+ .way {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   margin: 0 auto;
+   padding-bottom: 30%;
+   flex-wrap: wrap;
+ }
+
+ .way__item {
+   display: flex;
+   align-items: flex-start;
+   justify-content: center;
+   position: relative;
+   width: 30%;
+ }
+
+
+ .way__item__pic {
+   width: 13rem;
+   height: 13rem;
+   overflow: hidden;
+   background-color: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 0 5rem 0 0;
+ }
+
+ .way__item:last-child .way__item__pic img {
+   filter: brightness(0);
+ }
+
+
+ .way__item__pic img {
+   max-width: 15rem;
+   object-fit: contain;
+   padding: 2rem;
+ }
+
+ .way__item__info {
+  width: 70%;
+   color: var(--color-text);
+   margin-left: 5%;
+   margin-top: 5%;
+ }
+
+ .way__item__info h2 {
+   font-size: 2.5rem;
+   font-weight: 400;
+   text-transform: uppercase;
+ }
+
+ .way__item__info h3 {
+   font-size: 2rem;
+   font-weight: 300;
+   color: var(--color-text-light);
+ }
+
+ .way__item__info .btn {
+   position: absolute;
+   bottom: -2rem;
+   left: 30%;
+ }
+
+ @media(max-width: 900px) {}
+
+
+ @media(max-width: 768px) {
+  .way__item {
+    width: 100%;
+    margin: 5% 2% 15%;
+  }
+
+  .way__item__info .btn {
+     right: 0;
+     left: 60%;
+     bottom: inherit;
+     top: 30%;
+  }
+ }
+
+ @media(max-width: 600px) {
+  .way__item__info .btn {
+     right: 0;
+     left: 30%;
+     bottom: -2rem;
+     top: inherit;
+  }
+ }

@@ -1,0 +1,14 @@
+[
+{ "districtTw": "中正區", "zipcode": "100", "districtEn": "Zhongzheng" },
+{ "districtTw": "大同區", "zipcode": "103", "districtEn": "Datong"  },
+{ "districtTw": "中山區", "zipcode": "104", "districtEn": "Zhongshan"  },
+{ "districtTw": "松山區", "zipcode": "105", "districtEn": "Songshan"  },
+{ "districtTw": "大安區", "zipcode": "106", "districtEn": "Da’an"  },
+{ "districtTw": "萬華區", "zipcode": "108", "districtEn": "Wanhua"  },
+{ "districtTw": "信義區", "zipcode": "110", "districtEn": "Xinyi"  },
+{ "districtTw": "士林區", "zipcode": "111", "districtEn": "Shilin"  },
+{ "districtTw": "北投區", "zipcode": "112", "districtEn": "Beitou"  },
+{ "districtTw": "內湖區", "zipcode": "114", "districtEn": "Neihu"  },
+{ "districtTw": "南港區", "zipcode": "115", "districtEn": "Nangang"  },
+{ "districtTw": "文山區", "zipcode": "116", "districtEn": "Wenshan"  }
+]

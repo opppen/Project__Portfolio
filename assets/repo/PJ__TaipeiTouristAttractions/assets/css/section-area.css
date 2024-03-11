@@ -1,0 +1,308 @@
+ /* .area * { outline: 1px solid red; } */
+
+ .area {
+   height: max-content;
+   /* padding: 0 2%; */
+   /* padding-left: 10%; */
+   /* padding-top: 20%; */
+   background-color: var(--color-gray);
+   padding-bottom: 10%;
+   /* background-image: url(http://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000942.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center; */
+   position: relative;
+ }
+
+
+ .area .captain__title {
+   z-index: 1;
+ }
+
+ .area .content {
+   background-color: var(--color-white);
+   /* border-radius: 5rem 5rem 0 0; */
+   border-radius: 20rem 0 0 20rem;
+   /* margin: 15rem auto 0; */
+   padding: 10% 5% 10%;
+   display: flex;
+   align-items: flex-start;
+   /* max-width: 144rem; */
+   /* width: 90%; */
+   position: relative;
+   margin-left: 15%;
+   z-index: 1;
+ }
+
+ .area__info {
+   position: sticky;
+   top: 25rem;
+   margin-right: 5%;
+   width: 25%;
+   height: max-content;
+ }
+
+ .area__info .wrap {
+   position: relative;
+ }
+
+ .area__info .header {
+   font-size: 1.5vw;
+   font-weight: 300;
+   /* letter-spacing: 5px; */
+   margin: 0 0 15%;
+   color: var(--color-text-light);
+   text-align: center;
+   border-top: 3px solid var(--color-text-light);
+   border-bottom: 3px solid var(--color-text-light);
+   padding: 2%;
+ }
+
+
+ .area__info__title {
+   font-size: 1.5vw;
+   letter-spacing: 1rem;
+   font-weight: 700;
+   color: var(--color-text-light);
+ }
+
+ .area__info__subtitle {
+   font-size: 3vw;
+   font-weight: 500;
+   letter-spacing: -0.2rem;
+   color: var(--color-text-light);
+   /* text-transform: uppercase; */
+   /* -webkit-text-stroke: 1.5px #0f0f0e;
+    color: transparent; */
+ }
+
+ .area__info__zip-code {
+   font-size: 12vw;
+   font-weight: 100;
+   color: var(--color-gray);
+   margin-top: -3rem;
+   margin-left: 3rem;
+   position: relative;
+   z-index: -1;
+ }
+
+ .area__info__text {
+   font-size: 1.6rem;
+   margin-top: 10%;
+   background-color: #000000;
+   color: #fff;
+   padding: 1rem;
+   text-align: center;
+   border-radius: 2rem;
+ }
+
+ .area__sports {
+   flex: 2;
+   /* overflow: hidden; */
+   /* height: 200%; */
+   height: fit-content;
+   padding: 2%;
+   /* background-color: aqua; */
+   margin-top: -5%;
+ }
+
+
+
+ .area .captain__title::after {
+   bottom: 20%;
+   left: 5%;
+   transform-origin: top left;
+   transform: rotate(90deg);
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .card__list {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-row-gap: 10rem;
+   grid-column-gap: 4.5rem;
+ }
+
+ .card {
+   /* display: flex;
+    flex-direction: column; */
+   /* border: 0.1rem double black; */
+   position: relative;
+   /* box-shadow: 0px 7px 22px 3px rgba(7, 0, 5, 0.08); */
+   color: var(--color-text-light);
+   transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+ }
+
+ .card:hover {
+   transform: translateY(-1rem);
+ }
+
+ .card__body {
+   padding: 3.5%;
+   height: 40%;
+   /* background-color: aqua; */
+ }
+
+
+ .card__title {
+   margin: 3% 0 8%;
+   font-size: 1.8rem;
+   color: var(--color-secondary);
+ }
+
+
+ .card__footer {
+   margin-top: 15%;
+ }
+
+
+
+
+ .card__text {
+   display: flex;
+   /* align-items: flex-start; */
+   align-items: center;
+   font-size: 1.4rem;
+   font-weight: 500;
+   margin-top: 3%;
+ }
+
+ .card__text .material-symbols-outlined {
+   margin-right: 1rem;
+   font-size: 2rem;
+ }
+
+ .card__img-top {
+   height: 15rem;
+ }
+
+ .card__text:last-child {
+   align-items: flex-start;
+ }
+
+ .card__text_time {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+ }
+
+ .area__mark {
+   position: absolute;
+   top: -2%;
+   right: 5%;
+   /* width: 3rem;
+    height: 5rem; */
+   padding: 1rem 0.8rem 1.5rem 0.5rem;
+   background-color: var(--color-secondary);
+   color: var(--color-white);
+   -webkit-writing-mode: vertical-lr;
+   writing-mode: vertical-lr;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 0 0 2rem 2rem;
+   font-weight: 700;
+   letter-spacing: 2px;
+ }
+
+
+
+ /* select__box */
+
+ .area__info .select__box {
+   position: absolute;
+   bottom: -30%;
+ }
+
+ /* .area__info .select__box .selected__header {
+   background-color: #000000;
+   color: #fff;
+ } */
+
+
+
+
+ @media(max-width: 900px) {
+   .area .captain__title::after {
+     transform: rotate(0deg);
+   }
+ }
+
+ @media(max-width: 768px) {
+  .area .content {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .area__info {
+    width: 100%;
+    height: max-content;
+    margin-right: -5%;
+    text-align: center;
+  }
+  
+  .area__info .select__box  {
+    bottom: -35%;
+  }
+
+
+  .area__info .header {
+    font-size: 2rem;
+    margin: 0 0 10%;
+  }
+
+  .area__info__subtitle {
+    font-size: 2rem;
+  }
+
+  .area__info__title {
+    font-size: 3rem;
+  }
+
+  .area__info__zip-code {
+    margin-left: 0;
+  }
+
+  .area__sports {
+    margin-top: 30%;
+  }
+
+  .card__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 5rem;
+    grid-column-gap: 1rem;
+  }
+
+  .card__list p {
+    font-size: 1.4rem;
+  }
+
+  .card__title {
+    margin-bottom: 15%;
+  }
+
+  .card__footer {
+    margin-top: 25%;
+  }
+}

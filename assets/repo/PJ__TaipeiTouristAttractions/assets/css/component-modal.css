@@ -1,0 +1,123 @@
+/*************************************************************
+/* modal
+*************************************************************/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  overflow-y: scroll;
+ }
+
+ .modal__dialog {
+  position: relative;
+  margin: 5%;
+ }
+
+ .modal__dialog__wrap {
+  border-radius: 2rem;
+  overflow: hidden;
+  height: max-content;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  display: flex;
+  max-width: 90rem;
+
+ }
+
+ .modal__pic {
+  flex: 1;
+  /* background-image: url('http://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000942.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+
+ }
+
+
+
+
+
+ .modal__content {
+  /* background-color: var(--color-white); */
+  flex: 2;
+  padding: 5%;
+  /* overflow-y: scroll; */
+ }
+
+
+ .modal__title {
+  font-size: 3.5rem;
+ }
+
+ .modal__content p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+  letter-spacing: 0.5px;
+ }
+
+ .modal__description {
+  margin: 10% 0 5%;
+ }
+
+
+ .modal__category__item {
+  margin: 2% 0;
+  display: flex;
+  align-items: flex-start;
+ }
+
+ .modal__category__name {
+  /* border: 1px solid var(--color-primary); */
+  color: var(--color-text);
+  background-color: var(--color-white);
+  padding: 0.45rem 2rem;
+  border-radius: 2rem;
+  margin-right: 1rem;
+  width: 12rem;
+  text-align: center;
+ }
+
+p.modal__category__content {
+  max-width: 30rem;
+ }
+
+ 
+
+
+
+
+
+
+
+ .modal .btn-close {
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+  background-color: var(--color-white);
+  color: var(--color-secondary);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+
+
+ @media(max-width: 900px) {
+   .area .captain__title::after {
+     transform: rotate(0deg);
+   }
+ }
