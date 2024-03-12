@@ -30,7 +30,7 @@ body.js--isModalShow {
   position: relative;
   margin: 5%;
   max-width: 90rem;
-  height: 50rem;
+  height: 55rem;
 }
 
 .modal__dialog__wrap {
@@ -46,16 +46,7 @@ body.js--isModalShow {
 
 .modal__pic {
   flex: 1;
-  /* background-image: url('http://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000942.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
-
 }
-
-
-
-
 
 .modal__content {
   /* background-color: var(--color-white); */
@@ -84,32 +75,6 @@ body.js--isModalShow {
   border-radius: 2rem 0 0 2rem; */
 }
 
-/* 滾條狀態區塊 */
-.modal__description::-webkit-scrollbar {
-  /* display: none;  */
-  width: 0.5rem;
-}
-
-/* 滾條頭尾區塊 */
-.modal__description::-webkit-scrollbar-button {
-  background-color: var(--color-gray);
-  height: 0.8rem;
-}
-
-/* 滾條位置區塊 */
-.modal__description::-webkit-scrollbar-track-piece {
-  background-color: var(--color-tertiary);
-}
-
-/* 滾條移動位置區塊 */
-.modal__description::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary);
-}
-
-/* .modal__description::-webkit-scrollbar-track {
-  box-shadow: 0px 0px 0px 1px rgb(35, 186, 197);
-} */
-
 .modal__category__item {
   margin: 2% 0;
   display: flex;
@@ -131,12 +96,12 @@ p.modal__category__content {
   max-width: 30rem;
 }
 
-
-
-
-
-
-
+.modal__category__content__traffic {
+  height: 15rem;
+  width: 70%;
+  padding-right: 5%;
+  overflow-y: auto;
+}
 
 
 .modal .btn-close {
@@ -234,5 +199,11 @@ p.modal__category__content {
   /* 滾條移動位置區塊 */
   .modal__dialog__wrap::-webkit-scrollbar-thumb {
     background-color: var(--color-primary);
+  }
+
+
+  .modal__category__content__traffic {
+    height: max-content;
+    width: 100%;
   }
 }

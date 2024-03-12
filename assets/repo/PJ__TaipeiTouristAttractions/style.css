@@ -129,12 +129,6 @@ section {
   height: 100vh;
 }
 
-#app { 
-  /* position: relative; */
-  overflow-x: hidden;
-}
-
-
 .divide {
   height: 1px;
   background-color: var(--color-text);;
@@ -185,8 +179,6 @@ section {
 
 .captain__title p {
   font-weight: 400;
-  /* letter-spacing: -5px; */
-  /* color: var(--color-text); */
   font-size: 4vw;
 }
 
@@ -198,6 +190,34 @@ section {
   background-color: var(--color-secondary);
   transition: all 0.3s ease-in-out;
 }
+
+
+
+/* 滾條狀態區塊 */
+.customize-scrollbar::-webkit-scrollbar {
+  /* display: none;  */
+  width: 0.5rem;
+}
+
+/* 滾條頭尾區塊 */
+.customize-scrollbar::-webkit-scrollbar-button {
+  background-color: var(--color-gray);
+  height: 0.8rem;
+}
+
+/* 滾條位置區塊 */
+.customize-scrollbar::-webkit-scrollbar-track-piece {
+  background-color: var(--color-tertiary);
+}
+
+/* 滾條移動位置區塊 */
+.customize-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+}
+
+/* .customize-scrollbar::-webkit-scrollbar-track {
+  box-shadow: 0px 0px 0px 1px rgb(35, 186, 197);
+} */
 
 
 
@@ -220,7 +240,7 @@ section {
   align-items: center;
   z-index: 999;
 
-  /* display: none; */
+  display: none;
 }
 
 .overlay__content {

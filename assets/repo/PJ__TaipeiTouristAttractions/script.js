@@ -244,14 +244,18 @@
 
     const getTimeSetIntervalFUNC = componentNav()
 
+
+
     const componentModal = function () {
-        const modal = document.querySelector('.modal')
         const areaCarasOfButtonViewDetails = document.querySelectorAll('.area .card .btn')
         const showViewDetails = function () {
             areaCarasOfButtonViewDetails.forEach((button) => {
-                button.addEventListener('click', function () {
-                    // modal.classList.add('js--isShow')
+                button.addEventListener('click', function (event) {
                     window.document.body.classList.add('js--isModalShow')
+                    id = event.target.getAttribute('data-id')
+
+                    console.log('id', id)
+                    renderCurrentSelectionAreaModel(id)
                 })
             })
         }
@@ -273,17 +277,18 @@
         let optionListHTML = ''
 
 
+        // 取得Zip資料後產生選單於畫面上
         apiDataOfZip.forEach((item) => {
             let areaNameTw = item.districtTw
             let areaNameEn = item.districtEn
             let areaZip = item.zipcode
             const renderOptionList = function () {
                 optionListHTML += `
-                <li class="option">
-                    <input type="radio" class="radio" id="area${areaZip}" name="area" value="${areaZip}">
-                    <label for="area${areaZip}">${areaNameTw}</label>
-                </li>
-            `
+                    <li class="option">
+                        <input type="radio" class="radio" id="area${areaZip}" name="area" value="${areaZip}">
+                        <label for="area${areaZip}">${areaNameTw}</label>
+                    </li>
+                `
             }
 
             renderOptionList()
@@ -339,7 +344,7 @@
                             // }
 
                             // 渲染所選當前地區的卡片資料於頁面上 ///////// repeat
-                            // const renderCurrentSelectionAreaCard = function () {
+                            // const renderCurrentSelectionAreaSportsCard = function () {
 
                             //     const card__list = document.querySelector('.area__sports .card__list')
                             //     let card__listHTML = ''
@@ -380,23 +385,9 @@
                             //     componentModal()
                             // }
 
-                            // 修改所選的名字
-                            const changeAreaName = function () {
-                                let optionAreaName = option.querySelector('label').innerHTML
-                                // 修改當前的地區名
-                                currentSelectionAreaName = optionAreaName
-                                // 只有第一組選單的標題內容文字不變動
-                                selected__headers.forEach((selected__header, index) => {
-                                    if (index !== 0) {
-                                        selected__header.innerHTML = optionAreaName
-                                    }
-                                })
-
-                                renderCurrentSelectionAreaInfo()
-                            }
 
                             // 處理所選當前地區的資料  ///////// repeat
-                            // const setCurrentSelectionAreaData = function () {
+                            // const updateCurrentSelectionAreaData = function () {
                             //     const noDataText = '暫時未提供'
                             //     apiDataOfView.forEach((i, index) => {
 
@@ -450,15 +441,32 @@
 
                             //     })
 
-                            //     renderCurrentSelectionAreaCard()
+                            //     renderCurrentSelectionAreaSportsCard()
                             // }
 
 
+                            // 修改所選的名字
+                            const changeAreaName = function () {
+                                let optionAreaName = option.querySelector('label').innerHTML
+                                // 修改當前的地區名
+                                currentSelectionAreaName = optionAreaName
+                                // 只有第一組選單的標題內容文字不變動
+                                selected__headers.forEach((selected__header, index) => {
+                                    if (index !== 0) {
+                                        selected__header.innerHTML = optionAreaName
+                                    }
+                                })
+
+                                renderCurrentSelectionAreaInfo()
+
+                                console.log('currentSelectionAreaName', currentSelectionAreaName)
+                            }
 
                             document.querySelector('.area .content').scrollIntoView()
 
                             changeAreaName()
-                            setCurrentSelectionAreaData()
+                            currentSelectionAreaData = [] // 清空上一筆的當前資料
+                            updateCurrentSelectionAreaData() // 更新當前資料
                         }
 
                         activeOption()
@@ -471,7 +479,7 @@
             optionHanlder()
         })
 
-        // 針對每個選單標題進行的業務
+        // 針對每個選單標題進行的業務(開關)
         select__boxs.forEach((select__box) => {
             const selected__header = select__box.querySelector('.selected__header')
             selected__header.addEventListener('click', function () {
@@ -483,8 +491,55 @@
 
 
 
+    const renderCurrentSelectionAreaModel = function (id) {
+        const modal__dialog__wrap = document.querySelector('.modal__dialog__wrap')
+        let HTMLCode = ''
 
+        console.log('currentSelectionAreaName :', currentSelectionAreaName, '||', 'renderCurrentSelectionAreaModel', currentSelectionAreaData)
 
+        currentSelectionAreaData.forEach((item) => {
+            if (id === item.dataNo) {
+            
+                HTMLCode = `
+                    <div class="modal__pic">
+                        <img src="${item.dataPicSrc}" alt="${item.dataPicDesc}">
+                    </div>
+                    <div class="modal__content">
+                        <div class="modal__header">
+                            <h1 class="modal__title">${item.dataTitle}</h1>
+                        </div>
+
+                        <div class="modal__body">
+                            <p class="modal__description customize-scrollbar">
+                                ${item.dataDesc}
+                            </p>
+                            <ul class="modal__category">
+                                <li class="modal__category__item">
+                                    <span class="modal__category__name">地址</span>
+                                    <p class="modal__category__content">${item.dataAddress}</p>
+                                </li>
+                                <li class="modal__category__item">
+                                    <span class="modal__category__name">鄰近捷運站</span>
+                                    <p class="modal__category__content">
+                                        ${item.dataMRT}
+                                    </p>
+                                </li>
+                                <li class="modal__category__item">
+                                    <span class="modal__category__name">交通資訊</span>
+                                    <p class="modal__category__content__traffic customize-scrollbar">
+                                        ${item.dataInfo}
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+                
+            }
+        })
+
+        modal__dialog__wrap.innerHTML = HTMLCode
+    }
     ///// repeat /////
     const renderCurrentSelectionAreaInfo = function () {
 
@@ -501,52 +556,56 @@
         })
     }
     ///// repeat /////
-    const renderCurrentSelectionAreaCard = function () {
+    const renderCurrentSelectionAreaSportsCard = function () {
 
         const card__list = document.querySelector('.area__sports .card__list')
         let card__listHTML = ''
         currentSelectionAreaData.forEach((item) => {
             card__listHTML += `
                 <li class="card">
-                    <img class="card__img-top" src="${item.dataPicSrc}"
-                    alt="${item.dataPicDesc}">
+                    <div class="card__img" >
+                        <img src="${item.dataPicSrc}" alt="${item.dataPicDesc}">
+                    </div>
+                    
                     <div class="card__body">
-                    <h5 class="card__title">
-                        ${item.dataTitle}
-                    </h5>
-                    <p class="card__text">
-                        <span class="material-symbols-outlined">schedule</span>
-                        <span class="card__text_time">${item.dataOpenTime}</span>
-                    </p>
-                    <p class="card__text">
-                        <span class="material-symbols-outlined">call</span>
-                        <span class="card__text_tel">${item.dataTel}</span>
-                    </p>
-                    <p class="card__text">
-                        <span class="material-symbols-outlined">location_on</span>
-                        <span class="card__text_add">${item.dataAddress}</span>
-                    </p>
+                        <h5 class="card__title">
+                            ${item.dataTitle}
+                        </h5>
+                        <p class="card__text">
+                            <span class="material-symbols-outlined">schedule</span>
+                            <span class="card__text_time">${item.dataOpenTime}</span>
+                        </p>
+                        <p class="card__text">
+                            <span class="material-symbols-outlined">call</span>
+                            <span class="card__text_tel">${item.dataTel}</span>
+                        </p>
+                        <p class="card__text">
+                            <span class="material-symbols-outlined">location_on</span>
+                            <span class="card__text_add">${item.dataAddress}</span>
+                        </p>
                     </div>
                     <div class="card__footer">
-                    <button type="button" class="btn">
+
+                    <button type="button" class="btn" data-id="${item.dataNo}">
                         View Details
                     </button>
                     </div>
-                    <div class="area__mark">${item.dataAreaName}</div>
+
+                    <div class="area__mark">
+                        ${item.dataAreaName}
+                    </div>
                 </li>
             `
         })
 
         card__list.innerHTML = card__listHTML
-        currentSelectionAreaData = []
         componentModal()
     }
     ///// repeat /////
-    const setCurrentSelectionAreaData = function () {
+    const updateCurrentSelectionAreaData = function () {
         const noDataText = '暫時未提供'
         apiDataOfView.forEach((i, index) => {
-
-
+            
             let dataAreaName = i.address.substr(5, 3) || noDataText
             let dataNo = i.RowNumber || noDataText
             let dataTitle = i.stitle || noDataText
@@ -556,7 +615,6 @@
             let dataOpenTime = i.MEMO_TIME || noDataText
             let dataAddress = i.address || noDataText
             let dataTel = i.MEMO_TEL || noDataText
-
             const getFirstDataPicSrc = function () {
                 if (!apiDataOfView[index].file.img.length) {
                     return apiDataOfView[index].file.img['#text'] || ''
@@ -564,7 +622,6 @@
                     return apiDataOfView[index].file.img[0]['#text'] || ''
                 }
             }
-
             const getFirstDataPicDesc = function () {
                 if (!apiDataOfView[index].file.img.length) {
                     return apiDataOfView[index].file.img['-description'] || noDataText
@@ -572,9 +629,10 @@
                     return apiDataOfView[index].file.img[0]['-description'] || noDataText
                 }
             }
-
             let dataPicSrc = getFirstDataPicSrc()
             let dataPicDesc = getFirstDataPicDesc()
+
+
 
             if (currentSelectionAreaName === dataAreaName) {
                 currentSelectionAreaData.push({
@@ -590,14 +648,13 @@
                     'dataPicSrc': dataPicSrc,
                     'dataPicDesc': dataPicDesc
                 })
-
             }
 
 
         })
 
-        console.log('currentSelectionAreaData', currentSelectionAreaData)
-        renderCurrentSelectionAreaCard()
+        console.log('currentSelectionAreaName :', currentSelectionAreaName, '||','updateCurrentSelectionAreaData', currentSelectionAreaData)
+        renderCurrentSelectionAreaSportsCard()
     }
 
 
@@ -641,7 +698,7 @@
                 })
                 .then(function (data) {
                     apiDataOfView = data
-                    setCurrentSelectionAreaData()
+                    updateCurrentSelectionAreaData() // 初始化第一筆(預設/本地端)資料
                 })
                 .catch(function (error) {
                     console.log('apiDataOfView', error)
@@ -660,9 +717,6 @@
 
 
 
-
-
-
     const init = function () {
         splitTextIntoSpans('.slogan p')
         splitTextIntoSpans('.hero__info h1')
@@ -672,10 +726,9 @@
 
         // componentSelect()
         componentNav()
-        setInterval(getTimeSetIntervalFUNC, 1000)
-        componentModal()
-        componentPagetop()
+        // setInterval(getTimeSetIntervalFUNC, 1000)
+        // componentModal()
+        // componentPagetop()
     }
-
     document.addEventListener('DOMContentLoaded', init)
 })()

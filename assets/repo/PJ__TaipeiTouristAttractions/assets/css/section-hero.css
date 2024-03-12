@@ -68,8 +68,8 @@ section.hero .content {
 
 .hero__info .wrap {
   position: relative;
-  top: 100vh;
-  /* top: 0; */
+  /* top: 100vh; */
+  top: 0;
   margin-top: -5%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
