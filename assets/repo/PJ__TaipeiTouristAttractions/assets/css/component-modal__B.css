@@ -2,7 +2,7 @@
 /* modal
 *************************************************************/
 body.js--isModalShow {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .modal {
