@@ -44,6 +44,7 @@
 
             setTimeout(() => {
 
+
                 gsap.to('.counter p span', {
                     top: '-400px',
                     stagger: 0.1,
@@ -74,11 +75,19 @@
                     delay: 4,
                 })
 
+
+
                 gsap.to('.hero__bg img', {
                     scale: 1.2,
                     ease: 'power3.inOut',
                     duration: 3,
                     delay: 3.5,
+                })
+
+                gsap.to('body', {
+                    overflow: 'unset',
+                    // scrollTop: 0, --> 這樣寫好像不對?
+                    delay: 5,
                 })
 
                 gsap.to('.hero__info .title span', {
@@ -103,6 +112,8 @@
                     delay: 4,
                 })
 
+
+
                 gsap.to('.select__box', {
                     // bottom: '10%',
                     opacity: 1,
@@ -110,6 +121,7 @@
                     duration: 2,
                     delay: 10,
                 })
+
 
             }, 300)
         }
@@ -129,11 +141,22 @@
             let delay = Math.floor(Math.random() * 200) + 100
 
             setTimeout(updateCounter, delay)
+
+        
+            gsap.to('body', {
+                overflow: 'hidden',
+            })
+
+
+            // window.document.body.scrollTop = 0
+            // window.document.documentElement.scrollTop = 0
+
         }
 
 
         updateCounter()
         animateBgImg()
+        setTimeout(() => window.scrollTo(0,0), 150) // 自動回到最頂端
     }
 
     const componentPagetop = function () {
@@ -718,6 +741,7 @@
 
 
     const init = function () {
+        
         splitTextIntoSpans('.slogan p')
         splitTextIntoSpans('.hero__info h1')
 
