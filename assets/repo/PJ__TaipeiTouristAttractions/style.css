@@ -22,23 +22,13 @@
 @import "assets/css/component-pagetop.css";
 /* @import "assets/css/component-modal.css"; */
 @import "assets/css/component-modal__B.css";
+@import "assets/css/component-errorpage404.css";
 
 
 
 :root {
-  --bg: #FCE534;
-  --border: #303030;
-  --color: #7e7e7e;
-  --circle-outline: #505050;
 
   --color-accent: #e6e0d8;
-  --text-black: #000000;
-
-  --primary: #FCE534;
-  --secondary: #1D8D84;
-  --tertiary: #F9C2CA;
-
-  --black: #2C6066;
 
   --color-primary: #fcf7e1;
   --color-secondary: #5a9f4d;
@@ -96,7 +86,7 @@ body {
   width: 100%;
   height: 100vh;
   background-color: var(--color-primary);
-  /* overflow: hidden; */
+  /* overflow-x: hidden; */
 }
 
 html {
@@ -169,7 +159,7 @@ section {
 }
 
 .captain__title {
-  padding: 15% 5%;
+  padding: 15% 5% 5%;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 6vw;
@@ -239,7 +229,7 @@ section {
   justify-content: center;
   align-items: center;
   z-index: 999;
-  overflow: hidden;
+
   /* display: none; */
 }
 
@@ -321,29 +311,6 @@ section {
 
 
 
-.error-page {
-  position: fixed;
-  inset: 0;
-  background-color: var(--color-tertiary);
-  mix-blend-mode: difference;
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
-}
-
-.error-page h1 { font-size: 15vw;}
-
-
-
-
-
-
-
-
 /*************************************************************
 /* footer
 *************************************************************/
@@ -352,7 +319,6 @@ footer {
   background-color: #fff;
   width: 100%;
   position: relative;
-  margin-top: -5%;
   /* Clip-Path 圖片裁切 橢圓 */
   /* clip-path: ellipse(150% 100% at 50% 100%); */
 }
@@ -382,8 +348,21 @@ footer p {
 
 
 
+
 @media(max-width: 900px) {
   .overlay__content {
     width: 75%;
+  }
+
+}
+
+@media(max-width: 600px) {
+  footer {
+    padding-top: 20%;
+  }
+  footer .pagetop {
+    left: 50%;
+    top: -30%;
+    transform: translateX(-0);
   }
 }

@@ -1,8 +1,9 @@
 .select__box {
-  width: 30rem;
+  max-width: 30rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  font-size: 1.5rem;
+  font-size: 1vw;
   font-weight: 500;
   cursor: pointer;
   position: absolute;
@@ -125,4 +126,8 @@
 
 
 
- @media(max-width: 900px) {}
+ @media(max-width: 768px) {
+  .select__box {
+    font-size: 1.5rem;
+  }
+ }

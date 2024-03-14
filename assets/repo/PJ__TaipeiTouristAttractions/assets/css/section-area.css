@@ -36,7 +36,6 @@
   border-top: 3px solid var(--color-text-light);
   border-bottom: 3px solid var(--color-text-light);
   padding: 2%;
-  width: 100%;
 }
 
 .area__info__title {
@@ -66,7 +65,7 @@
   margin-left: 3rem;
 }
 
-.area__sports {
+.area__view {
   padding: 2%;
   /* background-color: aqua; */
   /* border: 1px solid aquamarine; */
@@ -76,7 +75,7 @@
 
 
 .area .captain__title::after {
-  bottom: 20%;
+  bottom: 5%;
   left: 5%;
   transform-origin: top left;
   transform: rotate(90deg);
@@ -257,7 +256,7 @@
     margin: 0;
   }
  
-  .area__sports {
+  .area__view {
     margin-top: 10%;
   }
   
@@ -303,8 +302,9 @@
     font-size: 10rem;
   }
  
-  .area__sports {
+  .area__view {
     margin-top: 30%;
+    width: 100%;
   }
  
   .card__list {

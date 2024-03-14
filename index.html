@@ -1,360 +1,382 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InTro</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <title>TTTTTTTT</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
-<body ontouchstart="">
-  <div class="container">
-    <div class="time-header">
-      <div class="slogan">every second counts</div>
-      <div class="m-d-w">
-        <div class="wrap">
-          <span class="month">07</span>
-          <span class="week">MON</span>
-        </div>
-        <span class="day">03</span>
+<body>
 
+  <div id="app">
+    <nav>
+      <div class="nav__date">
+        <span class="nav__date__year">2024</span>-
+        <span class="nav__date__month">3</span>-
+        <span class="nav__date__day">6</span>
       </div>
-    </div>
-    <header class="header">
-        <div class="logo-mg">
-          <img src="./assets/monster00101.png" alt="monster001">
-          <img src="./assets/monster00102.png" alt="monster002">
-        </div>
-        <div class="opening">
-          <div class="remark" style="text-align: center;">
-            <h1>Hello</h1>
-            <h2>I am PLUS</h2>
-          </div>
-          <!-- <a href="#project" class="scroll">Scroll</a> -->
-          <a href="#project" class="scroll-wrap">
-            <div class="scroll"></div>
-            <p>SCROLL</p>
-          </a>
-        </div>
-        <!-- <div class="text__circle">
-          <picture>
-            <img src="./assets/text__circle.png" alt="">
-          </picture>
-        </div> -->
-        <a href="#project" class="icon__arrow-downward">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"/></svg>
-        </a>
-    </header>
-    
+
+      <div class="nav__weather">
+        <span class="nav__weather__city">台北市</span>
+        <span class="material-symbols-outlined nav__weather__icon"></span>
+        <span class="nav__weather__temp">10</span><span>℃</span>
+        <span class="nav__weather__describe">降雨</span>
+      </div>
+
+      <div class="nav__time">
+        <span class="nav__time__meridiem">AM</span>
+        <span class="nav__time__hour">12</span>
+        <span class="nav__time_flashpoint">:</span>
+        <span class="nav__time__min">00</span>
+      </div>
+
+
+    </nav>
+
     <main>
-      <!-- 作品 -->
-      <section class="project" id="project">
-        <hgroup>
-          <h4>Project</h4>
-          <p>專案設計
-            <!-- <span class="memo-title">請點擊圖片看Demo</span> -->
-          </p>
-        </hgroup>
 
-        <article class="project-list">
-
-          <a href="https://opppen.github.io/VueZCode__FRONT/" target="_blank" title="VueZCode" class="project-item">
-            <div class="pic">
-              <img src="./assets/project__vuezcode.jpg">
-            </div>
-            <div class="text">
-              <h4>VueZCode 音樂祭</h4>
+      <section class="hero">
+        <div class="content">
+          <div class="hero__bg">
+            <img src="https://source.unsplash.com/random/?taipei" alt="hero-bg">
+          </div>
+          <div class="hero__info">
+            <h1 class="title">TAIPEI</h1>
+            <div class="wrap">
+              <h3 class="subtitle">歡迎光臨臺北</h3>
               <p>
-                音樂季主題的網站前後端規劃設計，使用 Node.js 來建置後端串接，資料庫為 MongoDB。前端透過 Vue 框架來開發，並利用 Vuetify UI
-                套件界面的設計來執行這個專案，視覺概念為每日接觸
-                code 的感受為出發。
+                體驗臺北的數種方式，在旅程開始之前，搶先一步認識臺北各區地方景點，減少抵達現地的慌張忙亂，在大都會裡玩得更自在，歡迎光臨臺北！
               </p>
-              <button class="click-btn">CLICk</button>
             </div>
+          </div>
+        </div>
 
-          </a>
+        <div class="select__box">
+          <div class="selected__header">
+            請選擇所要前往的行政區
+          </div>
+          <ul class="option__list">
+            <li class="option">
+              <input type="radio" class="radio" id="area100" name="area" value="100">
+              <label for="area100">中正區</label>
+            </li>
+          </ul>
+        </div>
 
-          <a href="./assets/repo/PJ__TaipeiTouristAttractions/index.html" target="_blank" title="TaipeiTouristAttractions" class="project-item">
-            <div class="pic">
-              <img src="./assets/project__TaipeiTouristAttractions.JPG">
-            </div>
-            <div class="text">
-              <h4>歡迎光臨台北</h4>
-              <p>
-                台北區域旅遊景點網頁設計，透過臺北市政府觀光傳播局 api 資料來串接規劃，Preload 頁面的轉場動畫透過 GSAP 來製作。
-              </p>
-              <button class="click-btn">CLICk</button>
-            </div>
-
-          </a>
-
-          <a href="./assets/repo/LO__PractiseTemplateRWDWeb/index.html" target="_blank" title="PractiseTemplateRWDWeb" class="project-item">
-            <div class="pic">
-              <img src="./assets/project__PractiseTemplateRWDWeb.jpg">
-            </div>
-            <div class="text">
-              <h4>靜態網頁切版</h4>
-              <p>
-                透過 templatemonster 樣板網站找其中一個喜歡的樣式，利用 HTML5 和 CSS 來純切版 RWD 操練。
-              </p>
-              <button class="click-btn">CLICk</button>
-            </div>
-          </a>
-
-          <a href="./assets/repo/PJ__SearchWeather/index.html" target="_blank" title="SearchWeather" class="project-item">
-            <div class="pic search-weather">
-              <p>36Hour</p>
-            </div>
-            <div class="text">
-              <h4>36小時天氣預報</h4>
-              <p>
-                運用 axios 串接開放平台的36小時的天氣預報 API 資料來製作輸入台灣各地關鍵字顯示目前狀態。
-              </p>
-              <button class="click-btn">CLICk</button>
-            </div>
-          </a>
-
-
-          <a href="./assets/repo/JS__cards/index.html" target="_blank" title="cards" class="project-item">
-            <div class="pic">
-              <img src="./assets/project__cards.jpg">
-            </div>
-            <div class="text">
-              <h4>Cards</h4>
-              <p>
-                模擬替 JOJO 動畫推出廣告小遊戲用 jQuery 搭 CSS3D 處理翻牌效果。
-              </p>
-              <button class="click-btn">CLICk</button>
-            </div>
-          </a>
-
-          <a href="./assets/repo/JS__click/index.html" target="_blank" title="click" class="project-item">
-            <div class="pic">
-              <img src="./assets/project__click.jpg">
-            </div>
-            <div class="text">
-              <h4>Click</h4>
-              <p>
-                UI 設計。透過 jQuery 來 DOM 操作，不讓畫面背佔滿的遊戲。
-              </p>
-              <button class="click-btn">CLICk</button>
-            </div>
-          </a>
-
-          <a href="./assets/repo/JS__calculator/index.html" target="_blank" title="calculator" class="project-item">
-            <div class="pic">
-              <img src="./assets/project__calculator.jpg">
-            </div>
-            <div class="text">
-              <h4>Calculator</h4>
-              <p>
-                UI 設計。巧克力為視覺概念並利用 JavaScript 相對應按鈕的計算機。
-              </p>
-              <button class="click-btn">CLICk</button>
-            </div>
-          </a>
-
-          <a href="./assets/repo/JS__clock/index.html" target="_blank" title="clock" class="project-item">
-            <div class="pic">
-              <img src="./assets/project__clock.jpg">
-            </div>
-            <div class="text">
-              <h4>Clock</h4>
-              <p>
-                UI 設計。使用 JavaScript 控制時鐘的指針角度。
-              </p>
-              <button class="click-btn">CLICk</button>
-            </div>
-          </a>
-        </article>
+        <button type="button" class="button--scroll">
+          <span>explore</span>
+        </button>
       </section>
 
-      <!-- 經歷 -->
-      <section class="work-experience" id="work-experience">
-        <hgroup>
-          <h4>Work Experience</h4>
-          <p>工作經歷</p>
-        </hgroup>
-        <article>
-          <div class="work-item">
-            <h4>前端網頁開發技術</h4>
-            <h6>職訓局</h6>
-            <p>2022/3~2022/9</p>
-            <ul>
-              <li>前端開發 (HTML、CSS 及 JavaScript 應用，使用 Bootstrap、jQuery、Vue.js、Vuetify 處理 RWD 網頁)</li>
-              <li>後端技術 ( Node.js 及 MongoDB 資料庫建立)</li>
-              <li>Figma 規劃流程與介面設計、透過 RESTful API 串接資料及利用 Git 版本控制管理專案</li>
-            </ul>
+      <section class="introduce">
+        <div class="content">
+          <div class="introduce__item">
+            <div class="wrap">
+              <div class="introduce__item__pic">
+                <div class="pic__box">
+                  <img
+                    src="https://images.unsplash.com/photo-1583938484095-270e82655645?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="pic">
+                </div>
+              </div>
+              <div class="introduce__item__text">
+                <h1 class="title">
+                  多元城市，四季都精采
+                </h1>
+                <p class="describe">
+                  臺北沒有明顯的四季差異，夏季溼熱、冬季濕冷，做好準備不影響出遊心情！
+                </p>
+                <!-- <p class="note">資料來源：中央氣象署</p> -->
+              </div>
+            </div>
           </div>
-          <div class="work-item">
-            <h4>視覺網頁設計</h4>
-            <h6>台灣特思爾大宇宙股份有限公司</h6>
-            <p>2017/7~2021/8</p>
-            <ul>
-              <li>調整網頁與手機上 UI 以及活動視覺設計 Banner 呈現。</li>
-              <li>改善資訊呈現更適合使用者觀看及操作。</li>
-              <li>處理活動檔期視覺設計。編排吸晴刺激消費畫面規劃並協助提出消費者使用習慣。</li>
-            </ul>
+
+          <div class="introduce__item">
+            <div class="wrap">
+              <div class="introduce__item__text">
+                <h1 class="title">
+                  踏入郊區，旅程更豐富
+                </h1>
+                <p class="describe">
+                  與臺北臨近的郊區也有獨到的觀光特色，帶你體驗不一樣的旅程！
+                </p>
+              </div>
+              <div class="introduce__item__pic">
+                <div class="pic__box">
+                  <img
+                    src="https://images.unsplash.com/photo-1687423450938-6b9e7e946e2c?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="pic">
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="work-item">
-            <h4>平面設計</h4>
-            <h6>翰柘創意廣告</h6>
-            <p>2010/1~2011/4</p>
-            <ul>
-              <li>品牌 CI 規劃。</li>
-              <li>網頁視覺設計。</li>
-              <li>包裝設計提案。</li>
-            </ul>
-          </div>
-          <div class="work-item">
-            <h4>網頁平面設計</h4>
-            <h6>悠美醫療集團</h6>
-            <p>2009/4~2009/12</p>
-            <ul>
-              <li>院內視覺設計規劃：海報製作，DM 製作，CI 設計，平面刊物設計。</li>
-              <li>從無到有協助架構官網。後續網頁管理維護。</li>
-              <li>配合產品行銷經理協助對外廣告視覺呈現。</li>
-            </ul>
-          </div>
-          <div class="work-item">
-            <h4>專櫃人員</h4>
-            <h6>台灣玩具反斗城</h6>
-            <p>2008/9~2010/9</p>
-            <ul>
-              <li>規劃賣場商品放置動線。</li>
-              <li>聆聽了解客人需求，並推薦商品。</li>
-              <li>請支援收銀的情況下。提供更好的客戶體驗。</li>
-            </ul>
-          </div>
-          <div class="work-item">
-            <h4>工業設計系 畢業</h4>
-            <h6>國立聯合大學</h6>
-            <!-- <p>2003/9~2007/6</p> -->
-          </div>
-        </article>
+        </div>
+
+        <!-- <div class="slogan">
+                    <h1 class="title">
+                        come with me
+                    </h1>
+                </div> -->
       </section>
 
-      <!-- 關於我 -->
-      <section class="about">
-        <hgroup>
-          <h4>About</h4>
-          <p>關於我</p>
-        </hgroup>
-        <article>
-          <p>
-            您好，我是 PLUS。聯合大學工業設計系畢業後，就陸續從事設計相關工作，接觸比較多的是視覺設計。喜愛看動漫畫電影的興趣也奠定了對色彩敏銳度和故事創造性。從小察覺人事物的敏銳度讓我會以他人為出發點，同理並思考著對方需求，將能所協助的，貼心提供給對方。如我身上盡量帶著衛生紙或濕紙巾。<br /><br />
+      <section class="area">
+        <div class="captain__title">
+          tourist attraction
+          <p>景點介紹</p>
+        </div>
 
-            這些特質也在設計上得到了很多幫助。像在特思爾大宇宙時，處理日系連鎖服飾品牌專案，思考輸出符合在地觀看者習慣，調整手機框架的 UI 視覺及傳達的內容讓觀更容易取得資訊。每季檔期或各節日活動也透過我們設計上的視覺協助，讓銷售業績有非常顯著提升。而得到客戶的感謝，於忙碌挑戰後令人開心。從中更體會到「用戶的體驗和感受」的刺激性。<br /><br />
+        <div class="content">
+          <div class="area__info">
+            <div class="wrap">
+              <h2 class="header">WELCOME 歡迎來到</h2>
+              <p class="area__info__subtitle">Zhongzheng</p>
+              <p class="area__info__title">松山區</p>
+              <p class="area__info__zip-code">105</p>
 
-            更因工作需常接觸網頁相關內容，主動自學網頁設計相關。慶辛參與職訓局的前端網頁開發技術課程受訓。積極的去學習到 HTML、CSS、JavaScript、Vue.js 及 RESTful API 等技術。過程中雖遇到卡關、自我懷疑、焦慮時間。但盡力讓自己心態沉住氣，一步一步用目前所及能力去完成各項任務。結業前需獨立從無到有完成網頁專案！從繪製 Wireframe 發想網頁如何與使用者溝通的架構，思考後端資料庫設計至使用 Figma 繪製 layout。透過 Vue 框架與 Vuetify UI 套件將此一點一點的製作完成。在這過程中認知到“真的不要限制住自己的可能性”。也讓自己更“網前”。<br /><br />
+              <div class="select__box">
+                <div class="selected__header">
+                  請選擇所要前往的行政區
+                </div>
+                <ul class="option__list">
+                  <!-- <li class="option">
+                    <input type="radio" class="radio" id="area100" name="area" value="100">
+                    <label for="area100">中正區</label>
+                  </li>
+                  <li class="option">
+                    <input type="radio" class="radio" id="area104" name="area" value="104">
+                    <label for="area104">中山區</label>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
 
-            過往處理視覺設計相關的美感經驗與工業設計對於使用者體驗上讓產品更方便符合人性使用的薰陶下，期許這些能力相輔前端網頁。設計出更有質感，使用上更方便的網頁 UI 呈現，讓使用者體驗更加舒適便利。以人為出發點下持續累積多元的能力及發展更多不同的可能。
-          </p>
-        </article>
+          <div class="area__view">
+            <ul class="card__list">
+              <li class="card">
+                <div class="card__img" >
+                  <img src="http://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000942.jpg"
+                  alt="pic">
+                </div>
+                <div class="card__body">
+                  <h5 class="card__title">
+                    艋舺青山宮
+                  </h5>
+                  <p class="card__text">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <span class="card__text_time">每日05:00~21:00</span>
+                  </p>
+                  <p class="card__text">
+                    <span class="material-symbols-outlined">call</span>
+                    <span class="card__text_tel">02-2382-2296</span>
+                  </p>
+                  <p class="card__text">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <span class="card__text_add">臺北市 萬華區貴陽街2段218號臺北市 萬華區貴陽街2段21</span>
+                  </p>
+                </div>
+                <div class="card__footer">
+                  <button type="button" class="btn">
+                    View Details
+                  </button>
+                </div>
+                <div class="area__mark">
+                  松山區
+                </div>
+              </li>
+            </ul>
+            <div class="divide"></div>
+            <ul class="pagination">
+              <!-- <li class="pagination-item">1</li>
+              <li class="pagination-item js--active">2</li>
+              <li class="pagination-item">3</li>
+              <li class="pagination-item">4</li> -->
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="modal">
+          <div class="modal__dialog">
+            <div class="modal__dialog__wrap">
+              <div class="modal__pic">
+                <img src="http://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000942.jpg" alt="img">
+              </div>
+              <div class="modal__content">
+                <div class="modal__header">
+                  <h1 class="modal__title">松山慈祐宮</h1>
+                </div>
+                <div class="modal__body">
+                  <p class="modal__description">
+                    慈祐宮興建於1753年，距今已有兩百多年的歷史，主要信奉的是黑面媽祖。傳說媽祖得道成仙之後，就時常在海上救助遇難的船隻，在臺灣的信仰中，是一位很普遍的神明。
+                    本宮建築為六層樓正方形，主殿三川殿相當莊嚴氣派，屋脊是以雙龍朝福、祿、壽三仙，有著保祐之意。宮內三川殿的石獅，為1803年的作品，在幾次的翻修中曾經一度被廢棄在他處，後來被發現後，將之置於三川殿前。由於呈現的是「雄獅張嘴、母獅閉嘴」的傳統，在臺灣十分少見，因此也成了鎮殿之寶。除了石雕之外，這裡的木雕也有著繽紛的色彩，不管是花卉、動物、人物都是栩栩如生，有著宮廟富麗的感覺。慈祐宮一直是錫口十三街莊居民精神皈依之所，每年3月23日天上聖母誕辰，十三街莊就會配合慈祐宮分為東、南、北3路線，沿途各商店住家紛紛設案，備辦牲禮或鮮花素果，恭迎媽祖出巡繞境，讓整個松山區熱鬧騰騰。近幾年來慈祐宮依然是當地重心，更不用說，饒河街夜市就在旁邊，自然是熱鬧非凡。
+                  </p>
+                  <ul class="modal__category">
+                    <li class="modal__category__item">
+                      <span class="modal__category__name">地址</span>
+                      <p class="modal__category__content">臺北市 松山區八德路4段761號</p>
+                    </li>
+                    <li class="modal__category__item">
+                      <span class="modal__category__name">鄰近捷運站</span>
+                      <p class="modal__category__content">
+                        松山
+                      </p>
+                    </li>
+                    <li class="modal__category__item">
+                      <span class="modal__category__name">交通資訊</span>
+                      <p class="modal__category__content__traffic">
+                        捷運站名：永春站，往北走約15~20分鐘公車：28、306、306區、311、518、527、53、531、605、605副、605新台五、622、629、63、668、678、711、藍7至松山車站下，步行約10分鐘可達。
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn-close">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+        </div>
+
       </section>
+
+      <section class="start-off">
+        <div class="captain__title">
+          start off
+          <p>出發</p>
+        </div>
+        <div class="content">
+          <ul class="way">
+
+
+            <li class="way__item">
+              <div class="way__item__pic">
+                <img src="https://www.youbike.com.tw/region/assets/images/logo.svg" alt="logo">
+              </div>
+              <div class="way__item__info">
+                <h2>Youbike</h2>
+                <h3>公共自行車</h3>
+                <a href="https://www.youbike.com.tw/region/main/" target="_blank" class="btn">View Details</a>
+              </div>
+            </li>
+            <li class="way__item">
+              <div class="way__item__pic">
+                <img
+                  src="https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvNDA1L2NrZmlsZS9hNDBjYzhjYS04ZDZlLTRkYmMtYTY4Zi1kMTAzODk3YWY3MGMuanBn&n=TWV0cm8gVGFpcGVpIExvZ28uanBn&icon=.jpg"
+                  alt="logo">
+              </div>
+              <div class="way__item__info">
+                <h2>metro taipei</h2>
+                <h3>台北捷運</h3>
+                <a href="https://www.metro.taipei/" target="_blank" class="btn">View Details</a>
+              </div>
+            </li>
+            <li class="way__item">
+              <div class="way__item__pic">
+                <img src="https://ebus.gov.taipei/images/logo_img02.svg" alt="logo">
+              </div>
+              <div class="way__item__info">
+                <h2>Bus taipei</h2>
+                <h3>大台北公車</h3>
+                <a href="https://ebus.gov.taipei/" target="_blank" class="btn">View Details</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+
     </main>
 
-    <footer>plusigner@gmail.com</footer>
 
-    <div id="gototop">
-      <span id="gototop-value"></span>
+    <footer>
+
+      <div class="content">
+
+        <p class="copyright">
+          Copyright © 2021 Department of Information and Tourism, Taipei City Government. All rights reserved.
+        </p>
+        <p>資料來源：臺北市政府觀光傳播局 / unsplash</p>
+      </div>
+
+      <div class="map__wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7229.272101025896!2d121.51134864281434!3d25.046422411232914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9727e339109%3A0xc34a31ce3a4abecb!2z5Y-w5YyX!5e0!3m2!1szh-TW!2stw!4v1709708862990!5m2!1szh-TW!2stw"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+
+      <div class="pagetop">
+
+        <a href="javascript:;" data-fancybox class="pagetop__button"></a>
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+          <defs>
+            <path id="circlePath" d="M 100, 100 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 " />
+          </defs>
+          <circle cx="150" cy="100" r="200" fill="none" />
+          <g>
+            <use xlink:href="#circlePath" fill="none" />
+            <text>
+              <textPath xlink:href="#circlePath">Go To Top - Go To Top - Go To Top -</textPath>
+            </text>
+          </g>
+        </svg>
+
+      </div>
+
+    </footer>
+
+
+
+    <div class="loading__overlay">
+      <div class="overlay__content">
+        <div class="overlay__images">
+          <div class="img__holder">
+            <img src="https://source.unsplash.com/random/?taipei" alt="">
+            <img src="https://source.unsplash.com/random/?taipei" alt="">
+            <img src="https://source.unsplash.com/random/?taipei" alt="">
+            <img src="https://source.unsplash.com/random/?taipei" alt="">
+            <img src="https://source.unsplash.com/random/?taipei" alt="">
+            <img src="https://source.unsplash.com/random/?taipei" alt="">
+          </div>
+        </div>
+
+        <div class="overlay__text">
+          <div class="counter">
+            <p>100%</p>
+          </div>
+
+          <div class="slogan">
+            <p>welcome</p>
+          </div>
+        </div>
+      </div>
     </div>
+
 
   </div>
 
+  <!-- <div class="error-page">
+    <h1>404 Error !</h1>
+  </div> -->
 
 
-
-
-  <script>
-    // https://shubo.io/element-size-scrolling/
-
-
-
-
-
-
-    // ===================================
-    // 設定goToTop
-    // ===================================
-    const goToTopScroll = function () {
-      const gototop = document.getElementById('gototop')
-      const gototopValue = document.getElementById('gototop-value')
-      const lastHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-      let scrollNow = document.documentElement.scrollTop
-      // 為什麼 scrollNow * 100 ?
-      const scrollValue = Math.round((scrollNow * 100) / lastHeight)
-      // console.log(scrollNow)
-
-      // ---------------------------------
-      // 控制gototop出現
-      // ---------------------------------
-      if (scrollNow > 100) {
-        gototop.style.display = 'flex'
-      } else {
-        gototop.style.display = 'none'
-      }
-
-      // ---------------------------------
-      // 點 gototop 回到最上面
-      // ---------------------------------
-      gototop.addEventListener('click', function () {
-        console.log(scrollNow)
-        document.documentElement.scrollTop = 0
-        // 為什麼不能直接 scrollNow = 0 ?
-        // scrollNow = 0
-      })
-
-      // ---------------------------------
-      // 點 gototop 進度條效果
-      // ---------------------------------
-      gototop.style.background = `conic-gradient(#00a0e8 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`
-    }
-
-    window.onscroll = goToTopScroll
-    window.onload = goToTopScroll
-
-    /*
-    取得整個文件的寬度/高度 可以用 document.documentElement 這個特殊的DOM node (對應於html)
-    PS 瀏覽器相容性的問題也可能要用 document.body
-
-    完整內容高度 (scrollHeight) 
-    捲軸本身高度 (clientHeight)
-    */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // ===================================
-    // 設定時間
-    // ===================================
-    const lang = navigator.language
-    const date = new Date()
-    const dayNumber = date.getDate()
-    const month = date.getMonth()
-    const weekName = date.toLocaleString(lang, { weekday: 'long'})
-    const monthName = date.toLocaleString(lang, { month: 'long'})
-
-    document.querySelector('.month').innerHTML = monthName
-    document.querySelector('.week').innerHTML = weekName
-    document.querySelector('.day').innerHTML = dayNumber
-
-
-
-
-    
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js">
+    // 教學影片：https://www.youtube.com/watch?v=M1Jx_aHeqSY
+    // 範例參考：https://props.studiolumio.com/
+    // https://line.me/tw/
+    // https://yard-dental.com/team
+    // https://www.cathaybk.com.tw/cathaybk/promo/event/fraud-prevention/speakout/index.html
   </script>
 </body>
 
