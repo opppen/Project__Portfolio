@@ -363,6 +363,6 @@ footer p {
   footer .pagetop {
     left: 50%;
     top: -30%;
-    transform: translateX(-0);
+    transform: translateX(-50%);
   }
 }
