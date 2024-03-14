@@ -137,9 +137,9 @@
 
             setTimeout(updateCounter, delay)
 
-            // gsap.to('body', {
-            //     overflow: 'hidden',
-            // })
+            gsap.to('body', {
+                overflow: 'hidden',
+            })
 
 
             // window.document.body.scrollTop = 0
