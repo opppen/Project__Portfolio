@@ -634,7 +634,7 @@
             } else {
                 let item = currentSelectionAreaViewData[i]
                 card__listHTMLCode += `
-                <li class="card">
+                <li class="card"  style="--card-sec: ${(i % currentSelectionAreaViewLimitOfPage + 1) * 0.3}s; >
                     <div class="card__img" >
                         <img src="${item.dataPicSrc}" alt="${item.dataPicDesc}">
                     </div>
