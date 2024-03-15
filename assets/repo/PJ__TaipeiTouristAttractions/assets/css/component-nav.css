@@ -68,19 +68,6 @@ nav>div {
   position: relative;
 }
 
-/* .nav__date::after {
-  content: '';
-  position: absolute;
-  background-color: var(--color-tertiary);
-  top: 1rem;
-  left: -1rem;
-  transform: translate(-50%, -50%);
-  width: 3rem;
-  height: 3rem;
-  z-index: -1;
-  border-radius: 50%;
-} */
-
 .nav__date > span { padding: 0 0.2rem;}
 
 
@@ -144,6 +131,7 @@ nav>div {
 
   .nav__weather__city {
     margin-right: 0.5rem;
+    display: none;
   }
 
   .nav__weather__city::after {

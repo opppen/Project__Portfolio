@@ -1,10 +1,55 @@
 ; (function () {
-    let apiDataOfZip = []
-    let apiDataOfView = []
-    let currentSelectionAreaName = '信義區'
-    let currentSelectionAreaViewData = []
+    let apiDataOfZip = []   // API取得的所有區域名資訊
+    let apiDataOfView = []  // API取得的所有區域景點資料
+    let currentSelectionAreaName = '信義區' // 當前所選中的區域名
+    let currentSelectionAreaViewData = [] // 當前選擇區域景點資料
     let currentSelectionAreaViewLimitOfPage = 9 // 每頁限制的景點顯示數量
     let currentPageNum = 1 // 當前的停留的頁面 console.log(typeof(currentPageNum))
+
+
+
+    // const useLocalStorage  =  function (areaName, latestPage) {
+    //     const userHistoryRecord = {
+    //         areaName: areaName,
+    //         latestPage: latestPage * 1
+    //     }
+
+    //     const getLocalStorage = JSON.parse(localStorage.getItem('userHistoryRecord'))
+    //     const setLocalStorage = localStorage.setItem('userHistoryRecord', JSON.stringify(userHistoryRecord))
+
+    //     if (areaName) {
+    //         return setLocalStorage
+    //     } else {
+    //         return getLocalStorage
+    //     }
+    // }
+    const getLocalStorage = function () {
+        return JSON.parse(localStorage.getItem('userHistoryRecord'))
+    }
+    const setLocalStorage = function (areaName, latestPage) {
+        const userHistoryRecord = {
+            areaName: areaName,
+            latestPage: Number(latestPage)
+        }
+
+        // 瀏覽器歷史紀錄
+        history.pushState(JSON.stringify(userHistoryRecord), '', '')
+        // LocalStorage紀錄
+        localStorage.setItem('userHistoryRecord', JSON.stringify(userHistoryRecord))
+    }
+
+    const compareCurrentSelection = function () {
+        let userHistoryRecord = getLocalStorage()
+
+        if (userHistoryRecord) {
+            console.log('GOOOD')
+            currentSelectionAreaName = userHistoryRecord.areaName
+            currentPageNum = userHistoryRecord.latestPage
+        }
+    }
+    const goToDesignatedPosition = function (elementClassName) {
+        document.querySelector(elementClassName).scrollIntoView() // 滑到指定的座標位置
+    }
 
     const splitTextIntoSpans = function (selector) {
         const element = document.querySelector(selector)
@@ -152,9 +197,7 @@
         setTimeout(() => window.scrollTo(0, 0), 150) // 自動回到最頂端
     }
 
-    const gotoDesignatedPosition = function (elementClassName) {
-        document.querySelector(elementClassName).scrollIntoView() // 滑到指定的座標位置
-    }
+
 
     const updateCurrentTime = function () {
         const getTimeSetIntervalFUNC = useComponentNav() //getTime
@@ -349,9 +392,12 @@
                 // 點擊每個分頁碼來獲取目前的位置數字來當參數＋重新渲染
                 item.addEventListener('click', function (e) {
                     currentPageNum = Number(e.target.innerText)
+
+                    setLocalStorage(currentSelectionAreaName, currentPageNum) // 儲存當前資料於 LocalStorage
                     renderPagination(currentPageNum)
                     renderCurrentSelectionAreaViewCardForPagination(currentPageNum)
-                    gotoDesignatedPosition('.area .content') // 滑到指定的座標位置
+                    goToDesignatedPosition('.area .content') // 滑到指定的座標位置
+                    // window.scrollTo(0, 300)
                 })
             })
         }
@@ -389,7 +435,6 @@
         }
 
     }
-    // 畫面初始化的時候需要一次
     const useComponentSelect = function () {
         const select__boxs = document.querySelectorAll('.select__box')
         const option__lists = document.querySelectorAll('.option__list')
@@ -427,6 +472,7 @@
                     const clickHandler = function () {
                         // 執行選項觸發的class樣式
                         const activeOption = function () {
+                            
                             // 先移除“所有” li.option 上的 js--active
                             itemOptions.forEach((itemOption) => {
                                 itemOption.classList.remove('js--active')
@@ -435,6 +481,7 @@
                             // 再針對“當下點擊的” li.option 新增 js--active
                             option.classList.add('js--active') // [BUG] 只會針對點的那個新增，另外一組不會連動...
                             // 關閉下拉選單內容
+
                             select__boxs.forEach((select__box) => {
                                 select__box.classList.remove('js--active')
                             })
@@ -442,7 +489,6 @@
 
                         // 選擇區域後執行的業務
                         const chooseSelectArea = function () {
-
 
                             const changeAreaName = function () {
                                 const selected__headers = document.querySelectorAll('.selected__header')
@@ -461,12 +507,18 @@
                                 renderCurrentSelectionAreaInfo()
                             }
 
+                            const resetCurrentSelectionArea = function () {
+                                // currentSelectionAreaViewData = [] // 先清空上一筆的當前資料
+                                currentPageNum = 1
+                                updateCurrentSelectionAreaViewData() // 再更新當前資料
+                                useComponentPagination() // 更新分頁狀態(回到第一頁)
+                                setLocalStorage(currentSelectionAreaName, currentPageNum) // 儲存當前資料於LocalStorage
+                            }
+
+
                             changeAreaName()  // 修改所選的名字
-                            currentSelectionAreaViewData = [] // 先清空上一筆的當前資料
-                            currentPageNum = 1
-                            updateCurrentSelectionAreaViewData() // 再更新當前資料
-                            useComponentPagination() // 更新分頁狀態
-                            gotoDesignatedPosition('.area .content') // 滑到指定的座標位置
+                            resetCurrentSelectionArea() // 重製更新
+                            goToDesignatedPosition('.area .content') // 滑到指定的座標位置
                             // document.querySelector('.area .content').scrollIntoView()
                         }
 
@@ -484,7 +536,7 @@
             clickOption()
         })
 
-        // 針對每個選單標題進行的業務()
+        // 針對每個選單標題進行的開關業務
         select__boxs.forEach((select__box) => {
             const selected__header = select__box.querySelector('.selected__header')
             selected__header.addEventListener('click', function () {
@@ -677,16 +729,17 @@
             })
         }
 
-        console.log('更新當前名: ', currentSelectionAreaName, '||', 'updateCurrentSelectionAreaViewData', currentSelectionAreaViewData)
+        // console.log('更新當前名: ', currentSelectionAreaName, '||', 'updateCurrentSelectionAreaViewData', currentSelectionAreaViewData)
+
+        // 先清空上一筆資料
+        currentSelectionAreaViewData = []
         // 製作當前選擇的資料
         setCurrentSelectionAreaViewData()
-        // 渲染當前選擇的資料於頁面景點卡片區(所有數量)
-        // renderCurrentSelectionAreaViewCardForAll()
         // 渲染當前選擇的資料於頁面景點卡片區(由分頁器來控制顯示的數量)
         renderCurrentSelectionAreaViewCardForPagination(currentPageNum)
+        // 渲染當前選擇的資料於頁面景點卡片區(所有數量)
+        // renderCurrentSelectionAreaViewCardForAll()
     }
-
-
 
     const getApiData = function () {
 
@@ -703,6 +756,7 @@
                 .then(function (data) {
                     apiDataOfZip = data
                     useComponentSelect() // 資料傳入select元件並使用
+                    // 判斷紀錄點處理
                     renderCurrentSelectionAreaInfo() // 初始化預設地區名稱顯示資訊
                 })
                 .catch(function (error) {
@@ -727,7 +781,21 @@
                 })
                 .then(function (data) {
                     apiDataOfView = data
-                    updateCurrentSelectionAreaViewData() // 初始化第一筆(預設/本地端)資料
+
+                    // let userHistoryRecord = JSON.parse(localStorage.getItem('userHistoryRecord'))
+
+                    // console.log('userHistoryRecord 一開始', userHistoryRecord)
+
+
+                    // if (userHistoryRecord) {
+                    //     currentSelectionAreaName = userHistoryRecord.areaName
+                    //     currentPageNum = userHistoryRecord.latestPage
+                    //     updateCurrentSelectionAreaViewData(currentSelectionAreaName, currentPageNum) 
+                    // } else {
+                    //     // 初始化第一筆(預設/本地端)資料
+                    //     updateCurrentSelectionAreaViewData() 
+                    // }
+                    updateCurrentSelectionAreaViewData() 
                     useComponentPagination()
                 })
                 .catch(function (error) {
@@ -746,19 +814,63 @@
 
 
 
-
+    
     const init = function () {
         splitTextIntoSpans('.slogan p')
         splitTextIntoSpans('.hero__info h1')
 
         animateStartLoader() // 開場動畫
+        useComponentPagetop() // 回到最上面
+
         useComponentNav() // 獲取天氣跟時間
         updateCurrentTime() // 每秒重複更新時間
+        
+        compareCurrentSelection() // 確認 LocalStorage 是否有上一次的資料(紀錄點)
         getApiData() // 獲取地方名跟景點資訊(並先預設名跟景點一開始就顯示)(執行useComponentSelect)
-
-        useComponentPagetop()
-
-
     }
+
+
+    // 監聽 history 變化，觸發行為 (回上一頁要做的事)
+    window.addEventListener('popstate', function (e) {
+        console.log('e.state:', e)
+        if (e.state) {
+            localStorage.setItem('userHistoryRecord', e.state)
+            let userHistoryRecord = JSON.parse(e.state)
+
+            currentSelectionAreaName = userHistoryRecord.areaName
+            currentPageNum = userHistoryRecord.latestPage
+            console.log('userHistoryRecord', userHistoryRecord, '||',currentSelectionAreaName, currentPageNum)
+
+
+
+
+            const changeAreaName = function () {
+                const selected__headers = document.querySelectorAll('.selected__header')
+                const options = document.querySelectorAll('li.option')
+
+                options.forEach((option) => {
+                    let optionAreaName = option.querySelector('label').innerHTML
+                    // 變更為當前的地區名
+                    optionAreaName = currentSelectionAreaName
+                    // 只有第一組選單的標題內容文字不變動
+                    selected__headers.forEach((selected__header, index) => {
+                        if (index !== 0) {
+                            selected__header.innerHTML = optionAreaName
+                        }
+                    })
+                })
+            }
+
+
+            // currentSelectionAreaViewData = [] // 先清空上一筆的當前資料
+            changeAreaName()
+            updateCurrentSelectionAreaViewData() // 再更新當前資料
+            renderCurrentSelectionAreaInfo() // 再更新當前資料
+            useComponentPagination() // 更新分頁狀態(回到第一頁)
+        } else {
+            history.back()
+        }
+    })
+
     document.addEventListener('DOMContentLoaded', init)
 })()

@@ -50,28 +50,27 @@ section.hero .content {
   /* mix-blend-mode: difference; */
 }
 
+.hero__info .wrap {
+  position: relative;
+  top: 50vh;
+  /* top: 0; */
+  margin-top: -5%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+
 .hero__info .title {
   position: relative;
   font-size: 20vw;
   font-weight: 400;
   opacity: 0.95;
   line-height: 100%;
-  /* text-shadow: -5px 8px 5px rgb(162, 162, 162); */
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 75%);
-  /* margin-bottom: calc(100vh - 70rem); */
 }
 
 .hero__info .title span {
   position: relative;
   top: 200vw;
-}
-
-.hero__info .wrap {
-  position: relative;
-  top: 100vh;
-  /* top: 0; */
-  margin-top: -5%;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .hero__info .subtitle {

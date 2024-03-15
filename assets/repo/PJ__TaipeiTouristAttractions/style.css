@@ -130,7 +130,6 @@ section {
 .btn {
   background-color: transparent;
   outline: 1px solid var(--color-text-light);
-  /* padding: 1.8rem 7rem 1.5rem 3.5rem; */
   padding-left: 2rem;
   padding-right: 5rem;
   padding-top: 2rem;
@@ -154,7 +153,8 @@ section {
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.btn:hover {
+.btn:hover,
+.btn:active {
   background-color: var(--color-gray);
 }
 
@@ -167,11 +167,6 @@ section {
   color: var(--color-secondary);
 }
 
-.captain__title p {
-  font-weight: 400;
-  font-size: 4vw;
-}
-
 .captain__title::after {
   content: '';
   position: absolute;
@@ -181,6 +176,10 @@ section {
   transition: all 0.3s ease-in-out;
 }
 
+.captain__title p {
+  font-weight: 400;
+  font-size: 4vw;
+}
 
 
 /* 滾條狀態區塊 */
@@ -358,11 +357,11 @@ footer p {
 
 @media(max-width: 600px) {
   footer {
-    padding-top: 20%;
+    padding-top: 5%;
   }
   footer .pagetop {
     left: 50%;
-    top: -30%;
+    top: -55%;
     transform: translateX(-50%);
   }
 }
