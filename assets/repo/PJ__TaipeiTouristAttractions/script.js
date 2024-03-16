@@ -196,7 +196,25 @@
         animateBgImg()
         setTimeout(() => window.scrollTo(0, 0), 150) // 自動回到最頂端
     }
+    const removeElementClass = function (querySelectorElement, containClassName, removeClassName) {
+        const getElements = document.querySelectorAll(querySelectorElement)
 
+        document.querySelector('div').addEventListener('click', function (e) {    
+            if (e.target.classList.value === containClassName) return
+
+            if (getElements.length > 1) {
+                getElements.forEach((item) => {
+                    item.classList.remove(removeClassName)
+                })
+            } else {
+                console.log('onlyone')
+                const getElement = document.querySelector(querySelectorElement)
+                getElement.classList.remove(removeClassName)
+            }
+        })
+
+
+    }
 
 
     const updateCurrentTime = function () {
@@ -481,10 +499,7 @@
                             // 再針對“當下點擊的” li.option 新增 js--active
                             option.classList.add('js--active') // [BUG] 只會針對點的那個新增，另外一組不會連動...
                             // 關閉下拉選單內容
-
-                            select__boxs.forEach((select__box) => {
-                                select__box.classList.remove('js--active')
-                            })
+                            removeElementClass('.select__box', 'selected__header', 'js--active')
                         }
 
                         // 選擇區域後執行的業務
