@@ -200,6 +200,7 @@
         const getElements = document.querySelectorAll(querySelectorElement)
 
         document.querySelector('div').addEventListener('click', function (e) {    
+            console.log(123)
             if (e.target.classList.value === containClassName) return
 
             if (getElements.length > 1) {
@@ -499,7 +500,6 @@
                             // 再針對“當下點擊的” li.option 新增 js--active
                             option.classList.add('js--active') // [BUG] 只會針對點的那個新增，另外一組不會連動...
                             // 關閉下拉選單內容
-                            removeElementClass('.select__box', 'selected__header', 'js--active')
                         }
 
                         // 選擇區域後執行的業務
@@ -558,6 +558,9 @@
                 select__box.classList.toggle('js--active')
             })
         })
+
+        // 關閉下拉選單（點其他地方）
+        removeElementClass('.select__box', 'selected__header', 'js--active')
     }
     const useComponentPagetop = function () {
         document.querySelector('.pagetop__button').addEventListener('click', function () {
