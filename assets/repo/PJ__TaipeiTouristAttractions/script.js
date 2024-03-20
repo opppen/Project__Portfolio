@@ -5,24 +5,12 @@
     let currentSelectionAreaViewData = [] // 當前選擇區域景點資料
     let currentSelectionAreaViewLimitOfPage = 9 // 每頁限制的景點顯示數量
     let currentPageNum = 1 // 當前的停留的頁面 console.log(typeof(currentPageNum))
+    gsap.registerPlugin(ScrollTrigger)
 
 
-
-    // const useLocalStorage  =  function (areaName, latestPage) {
-    //     const userHistoryRecord = {
-    //         areaName: areaName,
-    //         latestPage: latestPage * 1
-    //     }
-
-    //     const getLocalStorage = JSON.parse(localStorage.getItem('userHistoryRecord'))
-    //     const setLocalStorage = localStorage.setItem('userHistoryRecord', JSON.stringify(userHistoryRecord))
-
-    //     if (areaName) {
-    //         return setLocalStorage
-    //     } else {
-    //         return getLocalStorage
-    //     }
-    // }
+    // ////////////////////////////////////////////////////////////////////////////////
+    // TOOLS
+    // ////////////////////////////////////////////////////////////////////////////////
     const getLocalStorage = function () {
         return JSON.parse(localStorage.getItem('userHistoryRecord'))
     }
@@ -37,12 +25,10 @@
         // LocalStorage紀錄
         localStorage.setItem('userHistoryRecord', JSON.stringify(userHistoryRecord))
     }
-
     const compareCurrentSelection = function () {
         let userHistoryRecord = getLocalStorage()
 
         if (userHistoryRecord) {
-            console.log('GOOOD')
             currentSelectionAreaName = userHistoryRecord.areaName
             currentPageNum = userHistoryRecord.latestPage
         }
@@ -50,18 +36,38 @@
     const goToDesignatedPosition = function (elementClassName) {
         document.querySelector(elementClassName).scrollIntoView() // 滑到指定的座標位置
     }
+    const removeElementClass = function (querySelectorElement, containClassName, removeClassName) {
+        const getElements = document.querySelectorAll(querySelectorElement)
 
+        document.querySelector('div').addEventListener('click', function (e) {
+            if (e.target.classList.value === containClassName) return
+
+            if (getElements.length > 1) {
+                getElements.forEach((item) => {
+                    item.classList.remove(removeClassName)
+                })
+            } else {
+                console.log('onlyOne')
+                const getElement = document.querySelector(querySelectorElement)
+                getElement.classList.remove(removeClassName)
+            }
+        })
+    }
     const splitTextIntoSpans = function (selector) {
         const element = document.querySelector(selector)
         if (element) {
             let text = element.innerText
-            let splitText = text.split('').map((char) => {
+            let splitTextCode = text.split('').map((char) => {
                 return `<span>${char}</span>`
             }).join('')
-            element.innerHTML = splitText
+            element.innerHTML = splitTextCode
         }
     }
 
+
+    // ////////////////////////////////////////////////////////////////////////////////
+    // ANIMATE
+    // ////////////////////////////////////////////////////////////////////////////////
     const animateStartLoader = function () {
         let counterElement = document.querySelector('.counter p')
         let currentValue = 0
@@ -196,32 +202,139 @@
         animateBgImg()
         setTimeout(() => window.scrollTo(0, 0), 150) // 自動回到最頂端
     }
-    const removeElementClass = function (querySelectorElement, containClassName, removeClassName) {
-        const getElements = document.querySelectorAll(querySelectorElement)
 
-        document.querySelector('div').addEventListener('click', function (e) {    
-            console.log(123)
-            if (e.target.classList.value === containClassName) return
+    const animateFade = function () {
 
-            if (getElements.length > 1) {
-                getElements.forEach((item) => {
-                    item.classList.remove(removeClassName)
-                })
-            } else {
-                console.log('onlyone')
-                const getElement = document.querySelector(querySelectorElement)
-                getElement.classList.remove(removeClassName)
+        gsap.from('.introduce__item:nth-of-type(1) [data-scroll-right]', {
+            // 文字
+            duration: 1,
+            xPercent: '100', // x: '100%'
+            opacity: 0,
+            ease: 'power4.inOut',
+            scrollTrigger: {
+                trigger: '.introduce__item:nth-of-type(1) [data-scroll-left]', // 觸發位置
+                // markers: true,
+                start: 'top 80%',
+                end: 'bottom 100%',
+                scrub: 3,
+                toggleActions: "restart pause reverse pause"
             }
         })
 
+        gsap.from('.introduce__item:nth-of-type(1) [data-scroll-left]', {
+            // 圖片
+            duration: 5,
+            opacity: 0,
+            ease: 'power4.inOut',
+            scrollTrigger: {
+                trigger: '.introduce__item:nth-of-type(1) [data-scroll-left]', // 觸發位置
+                // markers: true,
+                start: 'top 100%',
+                end: 'bottom 100%',
+                scrub: 3,
+                toggleActions: "restart pause reverse pause"
+            }
+        })
+
+        gsap.from('.introduce__item:nth-of-type(2) [data-scroll-left]', {
+            // ------------------------------------------
+            // 文字
+            // ------------------------------------------
+            duration: 1,
+            xPercent: '-100', // x: '100%'
+            opacity: 0,
+            ease: 'power4.inOut',
+            scrollTrigger: {
+                trigger: '.introduce__item:nth-of-type(2) [data-scroll-right]', // 觸發位置
+                // markers: true,
+                start: 'top 90%',
+                end: 'bottom 100%',
+                scrub: 6,
+                toggleActions: "restart pause reverse pause"
+            }
+        })
+
+        gsap.from('.introduce__item:nth-of-type(2) [data-scroll-right]', {
+            // ------------------------------------------
+            // 圖片
+            // ------------------------------------------
+            duration: 3,
+            opacity: 0,
+            ease: 'power4.inOut',
+            scrollTrigger: {
+                trigger: '.introduce__item:nth-of-type(2) [data-scroll-right]', // 觸發位置
+                // markers: true,
+                start: 'top 50%',
+                end: 'bottom 100%',
+                scrub: 5,
+                // toggleActions: "restart pause reverse pause" 
+            }
+        })
+
+        gsap.from('.area .content', {
+            // ------------------------------------------
+            // card-list
+            // ------------------------------------------
+            duration: 1,
+            opacity: 0,
+            ease: 'power4.inOut',
+            scrollTrigger: {
+                trigger: '.area .captain__title p', // 觸發位置
+                // markers: true,
+                start: 'top 80%',
+                end: 'center 100%',
+                scrub: 10,
+                toggleActions: "restart pause reverse pause"
+            }
+        })
+
+        gsap.from('.start-off .way__item', {
+            duration: 0.5,
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            ease: 'power4.inOut',
+            scrollTrigger: {
+                trigger: '.start-off', // 觸發位置
+                // markers: true,
+                // 第一個代表 trigger 元素，第二個代表滾動條
+                start: '30% 50%',
+                end: '30% 50%',
+                // scrub: true,
+                toggleActions: 'play none reset none',
+            }
+        })
 
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    // ////////////////////////////////////////////////////////////////////////////////
+    // PageComponent
+    // ////////////////////////////////////////////////////////////////////////////////
     const updateCurrentTime = function () {
         const getTimeSetIntervalFUNC = useComponentNav() //getTime
         setInterval(getTimeSetIntervalFUNC, 1000)
     }
+    const buttonScrollHanlder = function () {
+        const buttonScroll = document.querySelector('.button--scroll')
+        const seed = 2
+        let upadteOpacity = 1 - (window.scrollY * seed / window.innerHeight)
+
+        buttonScroll.style.opacity = upadteOpacity
+    }
+
     const useComponentNav = function () {
 
         const getDate = function () {
@@ -262,63 +375,99 @@
 
             oReq.open('get', apiUrl, true)
             oReq.addEventListener('load', function () {
-                const response = JSON.parse(this.responseText)
-                console.log('getWeather', response)
+                if (oReq.status === 200) {
+                    // 檢查狀態碼，200成功後才執行以下動作
 
-                // 溫度顯示
-                const showTemp = function () {
-                    const nav__weather__temp = document.querySelector('.nav__weather__temp')
-                    nav__weather__temp.innerText = Math.round(response.main.temp)
-                }
+                    // 將結果資料轉成物件存儲
+                    const response = JSON.parse(this.responseText)
+                    console.log('getWeather', response)
+                    // 溫度顯示
+                    const showTemp = function () {
+                        const nav__weather__temp = document.querySelector('.nav__weather__temp')
+                        nav__weather__temp.innerText = Math.round(response.main.temp)
+                    }
 
-                // 狀態描述顯示
-                const showDescribe = function () {
-                    const nav__weather__describe = document.querySelector('.nav__weather__describe')
-                    nav__weather__describe.innerText = `${response.weather[0].description}`
-                }
+                    // 狀態描述顯示
+                    const showDescribe = function () {
+                        const nav__weather__describe = document.querySelector('.nav__weather__describe')
+                        nav__weather__describe.innerText = `${response.weather[0].description}`
+                    }
 
-                // icon顯示
-                const showWeatherIcon = function () {
-                    const nav__weather__icon = document.querySelector('.nav__weather__icon')
-                    let weatherIcon = response.weather[0].icon
-                    let showIcon = null
+                    // icon顯示
+                    const showWeatherIcon = function () {
+                        const nav__weather__icon = document.querySelector('.nav__weather__icon')
+                        let weatherIcon = response.weather[0].icon
+                        let showIcon = null
 
-                    if (weatherIcon === '01d' || weatherIcon === '01n') {
-                        showIcon = 'clear_day'
-                    } else if (weatherIcon === '02d' || weatherIcon === '02n') {
-                        showIcon = 'partly_cloudy_day'
-                    } else if (weatherIcon === '03d' || weatherIcon === '03n') {
-                        showIcon = 'cloud'
-                    } else if (weatherIcon === '04d' || weatherIcon === '04n') {
-                        showIcon = 'cloud'
-                    } else if (weatherIcon === '09d' || weatherIcon === '09n') {
-                        showIcon = 'rainy_light'
-                    } else if (weatherIcon === '10d' || weatherIcon === '10n') {
-                        showIcon = 'rainy'
-                    } else if (weatherIcon === '11d' || weatherIcon === '11n') {
-                        showIcon = 'thunderstorm'
-                    } else if (weatherIcon === '13d' || weatherIcon === '13n') {
-                        showIcon = 'ac_unit'
-                    } else {
-                        showIcon = 'mist'
+                        if (weatherIcon === '01d' || weatherIcon === '01n') {
+                            showIcon = 'clear_day'
+                        } else if (weatherIcon === '02d' || weatherIcon === '02n') {
+                            showIcon = 'partly_cloudy_day'
+                        } else if (weatherIcon === '03d' || weatherIcon === '03n') {
+                            showIcon = 'cloud'
+                        } else if (weatherIcon === '04d' || weatherIcon === '04n') {
+                            showIcon = 'cloud'
+                        } else if (weatherIcon === '09d' || weatherIcon === '09n') {
+                            showIcon = 'rainy_light'
+                        } else if (weatherIcon === '10d' || weatherIcon === '10n') {
+                            showIcon = 'rainy'
+                        } else if (weatherIcon === '11d' || weatherIcon === '11n') {
+                            showIcon = 'thunderstorm'
+                        } else if (weatherIcon === '13d' || weatherIcon === '13n') {
+                            showIcon = 'ac_unit'
+                        } else {
+                            showIcon = 'mist'
+                        }
+
+
+                        nav__weather__icon.innerText = showIcon
                     }
 
 
-                    nav__weather__icon.innerText = showIcon
+                    showTemp()
+                    showDescribe()
+                    showWeatherIcon()
+
+                } else {
+                    // 獲取失敗執行以下動作
+                    console.log('getWeather', error)
+                    window.document.body.innerHTML = `
+                    <div class="error-page">
+                        <h1>Weather 404 Error !</h1>
+                    </div>
+                    `
                 }
 
-
-                showTemp()
-                showDescribe()
-                showWeatherIcon()
             })
             oReq.send()
         }
 
+        const isShowNav = function () {
+            const nav = document.querySelector('nav')
+            let prevScrollPos = window.scrollY
+
+            const scrollHanlder = function () {
+                const currentScrollPos = window.scrollY
+                if (prevScrollPos > currentScrollPos) {
+                    nav.style.opacity = 1
+                } else {
+                    nav.style.opacity = 1 - (window.scrollY / window.innerHeight)
+                }
+            }
+            const mousemoveHanlader = function (e) {
+                if (e.clientY < 20) {
+                    nav.style.opacity = 1
+                }
+            }
+
+            window.addEventListener('scroll', scrollHanlder)
+            window.addEventListener('mousemove', mousemoveHanlader)
+        }
 
         getTime()
         getDate()
         getWeather()
+        // isShowNav()
         return getTime
     }
     const useComponentModal = function () {
@@ -401,7 +550,6 @@
         showViewDetails() // 打開
         modalButtonCloseHandler() // 關閉
     }
-    // useComponentSelect 需要
     const useComponentPagination = function () {
         let pagesTotal = Math.ceil(currentSelectionAreaViewData.length / currentSelectionAreaViewLimitOfPage) // 全部的景點可總共分成幾頁
 
@@ -425,12 +573,12 @@
             const pagination = document.querySelector('ul.pagination')
             let paginationHTML = '' // [NOTO] 寫在外面的話，重新執行renderPagination會往後加，變成要另外清空一次
             console.log(currentSelectionAreaName + 'pagesTotal可分成' + pagesTotal + '頁')
-    
+
             for (let i = 0; i < pagesTotal; i++) {
                 let pageNum = parseInt(i + 1)
-                console.log(currentPageNum, pageNum)
-                console.log(typeof (currentPageNum), typeof (pageNum))
-                
+                // console.log(currentPageNum, pageNum)
+                // console.log(typeof (currentPageNum), typeof (pageNum))
+
                 // [NOTE] 型別要注意!
                 if (currentPageNum === pageNum) {
                     paginationHTML += `
@@ -450,7 +598,7 @@
         // 景點分頁有1頁以上才會有分頁碼產生
         if (pagesTotal > 1) {
             renderPagination(currentPageNum)
-            console.log('pagesTotalpagesTotal',pagesTotal)
+            console.log('pagesTotalpagesTotal', pagesTotal)
         }
 
     }
@@ -491,7 +639,18 @@
                     const clickHandler = function () {
                         // 執行選項觸發的class樣式
                         const activeOption = function () {
-                            
+
+                            const removeSelectBoxActiveClass = function () {
+                                document.querySelector('div').addEventListener('click', function (e) {
+                                    if (e.target.classList.value === 'selected__header') return
+                                    console.log(e.target.classList)
+
+                                    select__boxs.forEach((select__box) => {
+                                        select__box.classList.remove('js--active')
+                                    })
+                                })
+
+                            }
                             // 先移除“所有” li.option 上的 js--active
                             itemOptions.forEach((itemOption) => {
                                 itemOption.classList.remove('js--active')
@@ -500,6 +659,10 @@
                             // 再針對“當下點擊的” li.option 新增 js--active
                             option.classList.add('js--active') // [BUG] 只會針對點的那個新增，另外一組不會連動...
                             // 關閉下拉選單內容
+                            select__boxs.forEach((select__box) => {
+                                select__box.classList.remove('js--active')
+                            })
+                            // removeSelectBoxActiveClass()
                         }
 
                         // 選擇區域後執行的業務
@@ -561,6 +724,7 @@
 
         // 關閉下拉選單（點其他地方）
         removeElementClass('.select__box', 'selected__header', 'js--active')
+
     }
     const useComponentPagetop = function () {
         document.querySelector('.pagetop__button').addEventListener('click', function () {
@@ -652,7 +816,7 @@
             } else {
                 let item = currentSelectionAreaViewData[i]
                 card__listHTMLCode += `
-                <li class="card"  style="--card-sec: ${(i % currentSelectionAreaViewLimitOfPage + 1) * 0.3}s;">
+                <li class="card" style="--card-sec: ${(i % currentSelectionAreaViewLimitOfPage + 1) * 0.3}s; ">
                     <div class="card__img" >
                         <img src="${item.dataPicSrc}" alt="${item.dataPicDesc}">
                     </div>
@@ -813,7 +977,7 @@
                     //     // 初始化第一筆(預設/本地端)資料
                     //     updateCurrentSelectionAreaViewData() 
                     // }
-                    updateCurrentSelectionAreaViewData() 
+                    updateCurrentSelectionAreaViewData()
                     useComponentPagination()
                 })
                 .catch(function (error) {
@@ -831,33 +995,33 @@
     }
 
 
-
-    
     const init = function () {
         splitTextIntoSpans('.slogan p')
         splitTextIntoSpans('.hero__info h1')
 
         animateStartLoader() // 開場動畫
-        useComponentPagetop() // 回到最上面
-
+        animateFade()
         useComponentNav() // 獲取天氣跟時間
-        updateCurrentTime() // 每秒重複更新時間
-        
         compareCurrentSelection() // 確認 LocalStorage 是否有上一次的資料(紀錄點)
+        // updateCurrentTime() // 每秒重複更新時間
         getApiData() // 獲取地方名跟景點資訊(並先預設名跟景點一開始就顯示)(執行useComponentSelect)
+        useComponentPagetop()
     }
 
 
     // 監聽 history 變化，觸發行為 (回上一頁要做的事)
     window.addEventListener('popstate', function (e) {
         console.log('e.state:', e)
+        // 假如有當前的歷史紀錄的話
         if (e.state) {
+            // 將當前的歷史紀錄連動更新於 localStorage
             localStorage.setItem('userHistoryRecord', e.state)
+            // 獲取當前的歷史紀錄
             let userHistoryRecord = JSON.parse(e.state)
-
+            // 當前的歷史紀錄取代頁面當前的資料
             currentSelectionAreaName = userHistoryRecord.areaName
             currentPageNum = userHistoryRecord.latestPage
-            console.log('userHistoryRecord', userHistoryRecord, '||',currentSelectionAreaName, currentPageNum)
+            console.log('userHistoryRecord', userHistoryRecord, '||', currentSelectionAreaName, currentPageNum)
 
 
 
@@ -881,14 +1045,19 @@
 
 
             // currentSelectionAreaViewData = [] // 先清空上一筆的當前資料
-            changeAreaName()
+            changeAreaName() // 更新下拉選單的區域名
             updateCurrentSelectionAreaViewData() // 再更新當前資料
             renderCurrentSelectionAreaInfo() // 再更新當前資料
             useComponentPagination() // 更新分頁狀態(回到第一頁)
         } else {
+            // 回上一頁
             history.back()
         }
     })
 
     document.addEventListener('DOMContentLoaded', init)
+
+    document.addEventListener('scroll', function () {
+        buttonScrollHanlder()
+    })
 })()
