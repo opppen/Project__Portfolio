@@ -4,7 +4,7 @@
 .introduce {
   height: auto;
   /* padding-bottom: 10%; */
-
+  overflow-x: hidden;
   padding: 5% 0;
   background-color: var(--color-primary);
 }
