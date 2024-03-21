@@ -1,0 +1,70 @@
+/* .loading__page * { outline: 1px solid red;} */
+.loading__page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    background-color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    overflow: hidden;
+    /* display: none; */
+}
+
+svg.logo {
+    max-width: 35vw;
+    max-height: 80vh;
+    color: var(--color-primary);
+    fill: var(--color-primary);
+    /* 筆畫的顏色 */
+    /* stroke: var(--color-primary); */
+    /* 筆畫的粗細 */
+    /* stroke-width: 0.5px; */
+    /* 筆畫的長度 */
+    stroke-dasharray: 200;
+    /* 筆畫的位置 */
+    /* stroke-dashoffset: 1000; */
+    animation-name: animatedDraw;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animatedDraw {
+    0% {
+        stroke-dashoffset: 200;
+        stroke-width: 0.5px;
+        stroke: var(--color-primary);
+        fill-opacity: 0%;
+    }
+
+    30% {         
+        stroke-dashoffset: 0;
+    }
+
+    60% {
+        stroke-width: 0;
+        fill-opacity: 8%;
+    }
+
+    75% {
+        stroke-width: 0;
+        fill-opacity: 100%;
+    }
+
+    90% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(100);
+    }
+}
+
+
+@media (max-width: 600px)  {
+    svg.logo { max-width: 80vw; }
+}
