@@ -1003,7 +1003,7 @@
         animateFade()
         useComponentNav() // 獲取天氣跟時間
         compareCurrentSelection() // 確認 LocalStorage 是否有上一次的資料(紀錄點)
-        // updateCurrentTime() // 每秒重複更新時間
+        updateCurrentTime() // 每秒重複更新時間
         getApiData() // 獲取地方名跟景點資訊(並先預設名跟景點一開始就顯示)(執行useComponentSelect)
         useComponentPagetop()
     }
