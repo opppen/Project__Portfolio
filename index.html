@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InTro</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body ontouchstart="">
   <div class="container">
-    <div class="time-header">
+    <nav class="nav__timer">
       <div class="slogan">every second counts</div>
       <div class="m-d-w">
         <div class="wrap">
@@ -21,31 +21,30 @@
         <span class="day">03</span>
 
       </div>
-    </div>
-    <header class="header">
-        <div class="logo-mg">
-          <img src="./assets/monster00101.png" alt="monster001">
-          <img src="./assets/monster00102.png" alt="monster002">
+    </nav>
+
+    <header class="hero">
+        <div class="logo__mascot">
+          <img src="./assets/monster00101.png" alt="monster001" class="monster001">
+          <img src="./assets/monster00102.png" alt="monster002" class="monster002">
         </div>
-        <div class="opening">
-          <div class="remark" style="text-align: center;">
+
+        <div class="hero__title">
+          <div class="remark">
             <h1>Hello</h1>
             <h2>I am PLUS</h2>
           </div>
-          <!-- <a href="#project" class="scroll">Scroll</a> -->
-          <a href="#project" class="scroll-wrap">
-            <div class="scroll"></div>
+          
+          <a href="#project" class="scroll__sign">
+            <div class="scroll__motion"></div>
             <p>SCROLL</p>
           </a>
         </div>
-        <!-- <div class="text__circle">
-          <picture>
-            <img src="./assets/text__circle.png" alt="">
-          </picture>
-        </div> -->
+
         <a href="#project" class="icon__arrow-downward">
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"/></svg>
         </a>
+
     </header>
     
     <main>
@@ -277,98 +276,8 @@
 
   </div>
 
-
-
-
-
-  <script>
-    // https://shubo.io/element-size-scrolling/
-
-
-
-
-
-
-    // ===================================
-    // 設定goToTop
-    // ===================================
-    const goToTopScroll = function () {
-      const gototop = document.getElementById('gototop')
-      const gototopValue = document.getElementById('gototop-value')
-      const lastHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-      let scrollNow = document.documentElement.scrollTop
-      // 為什麼 scrollNow * 100 ?
-      const scrollValue = Math.round((scrollNow * 100) / lastHeight)
-      // console.log(scrollNow)
-
-      // ---------------------------------
-      // 控制gototop出現
-      // ---------------------------------
-      if (scrollNow > 100) {
-        gototop.style.display = 'flex'
-      } else {
-        gototop.style.display = 'none'
-      }
-
-      // ---------------------------------
-      // 點 gototop 回到最上面
-      // ---------------------------------
-      gototop.addEventListener('click', function () {
-        console.log(scrollNow)
-        document.documentElement.scrollTop = 0
-        // 為什麼不能直接 scrollNow = 0 ?
-        // scrollNow = 0
-      })
-
-      // ---------------------------------
-      // 點 gototop 進度條效果
-      // ---------------------------------
-      gototop.style.background = `conic-gradient(#00a0e8 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`
-    }
-
-    window.onscroll = goToTopScroll
-    window.onload = goToTopScroll
-
-    /*
-    取得整個文件的寬度/高度 可以用 document.documentElement 這個特殊的DOM node (對應於html)
-    PS 瀏覽器相容性的問題也可能要用 document.body
-
-    完整內容高度 (scrollHeight) 
-    捲軸本身高度 (clientHeight)
-    */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // ===================================
-    // 設定時間
-    // ===================================
-    const lang = navigator.language
-    const date = new Date()
-    const dayNumber = date.getDate()
-    const month = date.getMonth()
-    const weekName = date.toLocaleString(lang, { weekday: 'long'})
-    const monthName = date.toLocaleString(lang, { month: 'long'})
-
-    document.querySelector('.month').innerHTML = monthName
-    document.querySelector('.week').innerHTML = weekName
-    document.querySelector('.day').innerHTML = dayNumber
-
-
-
-
-    
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>

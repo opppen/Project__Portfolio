@@ -1,0 +1,39 @@
+/* --------------------------------------- 
+  gototop 
+---------------------------------------- */
+#gototop {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  background-color: #00a0e8;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#gototop-value {
+  background-color: #fff;
+  width: 55%;
+  height: 55%;
+  border-radius: 50%;
+  position: absolute;
+}
+
+#gototop-value::after {
+  content: '';
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  border-bottom: 3px solid #00a0e8;
+  border-left: 3px solid #00a0e8 ;
+  top: 35%;
+  right: 30%;
+  transform: rotate(135deg);
+}
+

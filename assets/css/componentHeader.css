@@ -1,0 +1,249 @@
+/* --------------------------------------- 
+  hero
+---------------------------------------- */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  /* margin-top: 40px; */
+}
+
+.hero__title {
+  display: grid;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  /* overflow: hidden; */
+}
+
+.hero__title h1 {
+  font-size: 55px;
+}
+
+.hero__title .remark {
+  overflow: hidden;
+  text-align: center;
+}
+
+
+
+/* scroll__sign 
+ ************************************/
+.scroll__sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10%;
+}
+
+.scroll__sign p {
+  color: #000;
+  font-weight: 300;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.scroll__motion {
+  position: relative;
+  display: inline-block;
+  top: 60px;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  animation: runing 1.5s linear infinite;
+  background-color: #333333;
+  box-shadow: 9999px 35px 0 -5px #333333;
+  border-radius: 50%;
+  animation-delay: -0.85s;
+  cursor: pointer;
+}
+
+
+.scroll__motion::after,
+.scroll__motion::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: animatRuning 1.5s linear infinite;
+  cursor: pointer;
+}
+
+.scroll__motion::before {
+  animation-delay: -1.85s;
+}
+
+.scroll__motion::after {
+  animation-delay: -2.85s;
+}
+
+
+
+@keyframes animatRuning {
+  0% {
+    box-shadow: 9999px -35.5px 0 -5px #333333;
+  }
+
+  50% {
+    box-shadow: 9999px -5.625px 0 2px #333333;
+  }
+
+  100% {
+    box-shadow: 9999px 35.5px 0 -5px #333333;
+  }
+}
+
+
+/* .scroll {
+  margin-bottom: 10%;
+  position: relative;
+  display: inline-block;
+  font-weight: 300;
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+  border-radius: 25px;
+  padding: 2px 20px;
+  transition: all 0.8s;
+} */
+
+/* .scroll::after, .scroll::before {
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  transform: rotate(45deg) translateX(-50%);
+  opacity: 0;
+  animation: runing 2s ease-in-out infinite;
+} */
+
+/* @keyframes runing {
+  0% { 
+    top: 35px;
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+  }
+  100% { 
+    top: 60px;
+    opacity: 0;
+  }
+} */
+
+
+
+
+
+
+/* icon__arrow-downward
+ ************************************/
+.icon__arrow-downward {
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  border-radius: 50%;
+  margin-top: 5%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.icon__arrow-downward:active {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.icon__arrow-downward svg {
+  fill: #fff;
+}
+
+
+
+
+
+
+/* logo__mascot
+ ************************************/
+
+.logo__mascot {
+  width: 30%;
+  display: flex;
+  position: relative;
+}
+
+.logo__mascot img:first-child {
+  animation: animatWhirl 10s ease-in-out infinite;
+}
+
+.logo__mascot img:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes animatWhirl {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+
+
+/* --------------------------------------- 
+  @media screen and (min-width:768px) 
+---------------------------------------- */
+@media screen and (min-width:768px) {
+
+  .icon__arrow-downward {
+    display: flex;
+  }
+
+  .scroll__sign {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+  }
+
+  .scroll__sign p {
+    writing-mode: vertical-lr;
+    text-orientation: sideways-right;
+  }
+
+  .scroll__motion {
+    top: 120px;
+  }
+
+}
+
+
+@media screen and (max-width: 576px) {
+
+  .logo__mascot {
+    width: 60%;
+  }
+
+  .hero__title {
+    margin-top: 20%;
+  }
+}
