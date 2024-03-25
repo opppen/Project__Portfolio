@@ -1,6 +1,4 @@
 ; (function () {
-
-
 	const getDate = function () {
 		// ===================================
 		// 設定時間
@@ -16,6 +14,10 @@
 		document.querySelector('.week').innerHTML = weekName
 		document.querySelector('.day').innerHTML = dayNumber
 	}
+
+    const goToDesignatedPosition = function (elementClassName) {
+        document.querySelector(elementClassName).scrollIntoView({ behavior: "smooth", }) // 滑到指定的座標位置
+    }
 
 	const goToTopScroll = function () {
 		/*	
@@ -131,11 +133,23 @@
 				yPercent: 0,
 			}).to('.scroll__sign', {
 				autoAlpha: 1,
-			},'<')
+			}, '<')
+			// .to('.hero', {
+			// 	yPercent: -50,
+			// }, '<+2')
 		}
 
 		animaxHeroInit()
 		animaxHeroRunning()
+		// 跑完動畫到指定的地方
+		setTimeout(() => {
+			// goToDesignatedPosition('.project')
+			window.scrollBy({
+				top: 500,
+				// left: 100,
+				behavior: "smooth",
+			  })
+		}, 14500)
 	}
 
 
