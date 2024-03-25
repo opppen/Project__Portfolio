@@ -105,8 +105,10 @@
 				}
 			})
 
-			tl
-			.to('.logo__mascot', {
+			tl.to('body', {
+				autoAlpha: 1,
+				duration: 0,
+			}, '0.001').to('.logo__mascot', {
 				autoAlpha: 1,
 				xPercent: 80,
 				rotate: -360,
@@ -167,6 +169,6 @@
 
 
 
-	window.addEventListener('load', initHandler)
+	window.addEventListener('DOMContentLoaded', initHandler)
 	window.addEventListener('scroll', scrollHandler)
 })()
