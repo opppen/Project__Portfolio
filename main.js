@@ -74,8 +74,11 @@
 				yPercent: -100,
 			})
 			gsap.set('.logo__mascot', {
-				scale: 0,
-				// autoAlpha: 0,
+				// scale: 0,
+				xPercent: -300,
+				yPercent: 45,
+				rotate: 360,
+				autoAlpha: 0,
 			})
 			gsap.set('.hero__title .remark h1', {
 				yPercent: -200,
@@ -102,9 +105,18 @@
 
 			tl.to('.logo__mascot', {
 				autoAlpha: 1,
-				scale: 1,
+				xPercent: 80,
+				rotate: -360,
+				duration: 3,
+			}).to('.logo__mascot', {
+				xPercent: 0,
+				rotate: 0,
+				// scale: 1,
 				// yPercent: 0,
-				// duration: 1,
+				// duration: 5,
+				ease: "back.inOut(1.7)",
+			}).to('.logo__mascot', {
+				yPercent: 0,
 				ease: "back.inOut(1.7)",
 			}).to('.hero__title .remark h1', {
 				yPercent: 0,
@@ -114,13 +126,12 @@
 				yPercent: 0,
 			}, '<').to('.hero', {
 				yPercent: 8,
-			}, '<')
-			.to('.icon__arrow-downward', {
+			}, '<').to('.icon__arrow-downward', {
 				autoAlpha: 1,
 				yPercent: 0,
 			}).to('.scroll__sign', {
 				autoAlpha: 1,
-			})
+			},'<')
 		}
 
 		animaxHeroInit()

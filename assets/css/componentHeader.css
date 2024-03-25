@@ -221,8 +221,8 @@
 
   .scroll__sign {
     position: absolute;
-    bottom: 0;
-    right: 5%;
+    bottom: 8%;
+    right: -15%;
   }
 
   .scroll__sign p {
@@ -244,6 +244,12 @@
   }
 
   .hero__title {
-    margin-top: 20%;
+    margin-top: 10%;
+  }
+  
+
+  .scroll__motion {
+    top: 80px;
+    left: -9999px;
   }
 }
