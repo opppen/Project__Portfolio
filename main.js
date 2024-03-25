@@ -15,9 +15,9 @@
 		document.querySelector('.day').innerHTML = dayNumber
 	}
 
-    const goToDesignatedPosition = function (elementClassName) {
-        document.querySelector(elementClassName).scrollIntoView({ behavior: "smooth", }) // 滑到指定的座標位置
-    }
+	const goToDesignatedPosition = function (elementClassName) {
+			document.querySelector(elementClassName).scrollIntoView({ behavior: "smooth", }) // 滑到指定的座標位置
+	}
 
 	const goToTopScroll = function () {
 		/*	
@@ -105,7 +105,8 @@
 				}
 			})
 
-			tl.to('.logo__mascot', {
+			tl
+			.to('.logo__mascot', {
 				autoAlpha: 1,
 				xPercent: 80,
 				rotate: -360,
@@ -166,6 +167,6 @@
 
 
 
-	window.addEventListener('DOMContentLoaded', initHandler)
+	window.addEventListener('load', initHandler)
 	window.addEventListener('scroll', scrollHandler)
 })()
