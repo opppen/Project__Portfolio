@@ -165,6 +165,7 @@
 		getDate()
 		goToTopScroll()
 		animaxHero()
+		AOS.init()
 	}
 
 
