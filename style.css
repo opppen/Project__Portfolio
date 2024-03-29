@@ -69,7 +69,37 @@ hgroup {
 hgroup h4 {
   font-size: 33px;
   font-weight: 900;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
 }
+
+/* hgroup h4::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
+  width: 100%;
+  animation: textmask 0.2s ease-in-out forwards;
+  animation-delay: 1s;
+} */
+
+
+@keyframes textmask {
+  0% { left: 0; }
+  10% { left: 0; }
+  50% { right: 50%; }
+  50% { right: 0; }
+  100% { left: 100%;  }
+}
+
+
+
+
+
+
 
 
 /* --------------------------------------- 
